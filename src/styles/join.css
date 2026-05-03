@@ -1,0 +1,95 @@
+.join-hero { padding:140px 96px 80px; border-bottom:1px solid var(--border); position:relative; overflow:hidden; }
+.join-hero-dotgrid { position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,0.05) 1px,transparent 1px);background-size:40px 40px;pointer-events:none; }
+.join-hero-glow { position:absolute;inset:0;background:radial-gradient(ellipse 50% 70% at 70% 50%,rgba(85,112,241,0.08) 0%,transparent 65%);pointer-events:none; }
+.join-hero-inner { max-width:1200px;margin:0 auto;position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center; }
+.join-hero-title { font-family:var(--display);font-size:clamp(40px,5vw,68px);font-weight:700;letter-spacing:-0.03em;line-height:1.0;margin-bottom:16px; }
+.join-hero-title em { font-style:normal;color:var(--blue); }
+.join-hero-sub { font-size:16px;font-weight:300;color:var(--white-dim);line-height:1.8;margin-bottom:0; }
+
+/* Steps */
+.steps-grid { display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:8px;overflow:hidden; }
+.step-card { background:var(--bg);padding:36px 28px;position:relative; }
+.step-num { font-family:var(--display);font-size:56px;font-weight:700;letter-spacing:-0.03em;color:rgba(255,255,255,0.04);line-height:1;position:absolute;top:16px;right:20px; }
+.step-icon { width:44px;height:44px;border-radius:6px;display:flex;align-items:center;justify-content:center;margin-bottom:20px; }
+.step-title { font-family:var(--display);font-size:20px;font-weight:600;letter-spacing:-0.01em;margin-bottom:10px; }
+.step-body { font-size:13px;font-weight:300;color:var(--white-dim);line-height:1.7; }
+
+/* Division chooser */
+.div-chooser { display:grid;grid-template-columns:repeat(3,1fr);gap:14px; }
+.div-choice { background:var(--bg2);border:2px solid var(--border);border-radius:8px;padding:24px;cursor:pointer;transition:all 0.2s;position:relative;user-select:none; }
+.div-choice:hover { border-color:rgba(255,255,255,0.15); }
+.div-choice.selected { }
+.div-choice-check { position:absolute;top:16px;right:16px;width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px; }
+.div-choice-icon { width:40px;height:40px;border-radius:6px;display:flex;align-items:center;justify-content:center;margin-bottom:14px; }
+.div-choice-name { font-family:var(--display);font-size:17px;font-weight:600;margin-bottom:6px; }
+.div-choice-desc { font-size:12px;font-weight:300;color:var(--white-dim);line-height:1.6; }
+.div-choice-tags { display:flex;flex-wrap:wrap;gap:5px;margin-top:12px; }
+.div-choice-tag { font-family:var(--mono);font-size:9px;letter-spacing:0.08em;padding:2px 8px;border-radius:2px;text-transform:uppercase; }
+
+/* Signup panel */
+.signup-panel { background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:48px 40px;text-align:center; }
+.signup-status-badge { display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border-radius:30px;font-family:var(--mono);font-size:10px;letter-spacing:0.15em;text-transform:uppercase;margin-bottom:28px; }
+.signup-status-badge.closed { background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.4); }
+.signup-status-badge.open { background:rgba(34,201,122,0.08);border:1px solid rgba(34,201,122,0.25);color:var(--green-bright); }
+.signup-status-dot { width:6px;height:6px;border-radius:50%;flex-shrink:0; }
+.signup-status-dot.closed { background:rgba(255,255,255,0.25); }
+.signup-status-dot.open { background:var(--green-bright);animation:pulse-dot 2s ease-in-out infinite; }
+.signup-title { font-family:var(--display);font-size:clamp(22px,2.5vw,32px);font-weight:700;letter-spacing:-0.02em;margin-bottom:12px; }
+.signup-body { font-size:14px;font-weight:300;color:var(--white-dim);line-height:1.8;max-width:400px;margin:0 auto 32px; }
+.signup-next-date { display:inline-flex;align-items:center;gap:10px;padding:10px 20px;background:var(--bg3);border:1px solid var(--border);border-radius:4px;font-family:var(--mono);font-size:11px;letter-spacing:0.12em;color:rgba(255,255,255,0.4);margin-bottom:32px; }
+.signup-next-date strong { color:var(--white);letter-spacing:0.08em; }
+.signup-cta-btn { display:inline-flex;align-items:center;gap:10px;padding:15px 36px;font-family:var(--sans);font-size:15px;font-weight:500;color:#fff;background:var(--blue);border:none;border-radius:4px;cursor:pointer;letter-spacing:0.04em;transition:background 0.2s,transform 0.2s,box-shadow 0.2s;text-decoration:none; }
+.signup-cta-btn:hover { background:#6b83f3;transform:translateY(-2px);box-shadow:0 8px 32px rgba(85,112,241,0.3); }
+.signup-footnote { font-family:var(--mono);font-size:10px;letter-spacing:0.1em;color:rgba(255,255,255,0.2);margin-top:18px; }
+
+/* FAQ */
+.faq-list { display:flex;flex-direction:column;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:8px;overflow:hidden; }
+.faq-item { background:var(--bg2); }
+.faq-q { padding:20px 24px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;gap:20px;transition:background 0.2s; }
+.faq-q:hover { background:var(--bg3); }
+.faq-q-text { font-family:var(--display);font-size:16px;font-weight:500; }
+.faq-chevron { flex-shrink:0;transition:transform 0.25s; }
+.faq-chevron.open { transform:rotate(180deg); }
+.faq-a { overflow:hidden;max-height:0;transition:max-height 0.35s cubic-bezier(0.4,0,0.2,1); }
+.faq-a.open { max-height:200px; }
+.faq-a-inner { padding:0 24px 20px;font-size:14px;font-weight:300;color:var(--white-dim);line-height:1.75; }
+
+/* Perks */
+.perks-grid { display:grid;grid-template-columns:repeat(4,1fr);gap:14px; }
+.perk-card { background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:24px;text-align:center;transition:border-color 0.2s; }
+.perk-card:hover { border-color:rgba(255,255,255,0.12); }
+.perk-icon { font-size:28px;margin-bottom:12px; }
+.perk-title { font-family:var(--display);font-size:15px;font-weight:600;margin-bottom:6px; }
+.perk-desc { font-size:12px;color:var(--white-dim);line-height:1.6; }
+
+/* ── Tablet ── */
+@media(max-width:1024px){
+  .join-hero { padding:120px 48px 60px; }
+  .perks-grid { grid-template-columns:repeat(2,1fr); }
+  .div-chooser { grid-template-columns:1fr 1fr; }
+  .join-form-section-grid { grid-template-columns:1fr !important; gap:40px !important; }
+  .faq-section-grid { grid-template-columns:1fr !important; gap:32px !important; }
+}
+/* ── Mobile ── */
+@media(max-width:768px){
+  .join-hero { padding:96px 20px 52px; }
+  .join-hero-inner { grid-template-columns:1fr; gap:36px; }
+  .steps-grid { grid-template-columns:1fr; }
+  .div-chooser { grid-template-columns:1fr; }
+  .form-grid { grid-template-columns:1fr; }
+  .form-group.full { grid-column:span 1; }
+  .perks-grid { grid-template-columns:1fr 1fr; }
+  .join-form-section-grid { grid-template-columns:1fr !important; gap:36px !important; }
+  .faq-section-grid { grid-template-columns:1fr !important; gap:28px !important; }
+  .join-form-wrap { padding:24px 20px; }
+  /* Hero stats row */
+  .join-hero-stats { flex-direction:column; gap:12px; }
+  /* Section inner padding */
+  .section-inner { padding:56px 20px !important; }
+}
+/* ── Small mobile ── */
+@media(max-width:480px){
+  .perks-grid { grid-template-columns:1fr; }
+  .div-chooser { grid-template-columns:1fr; }
+  .join-hero-title { font-size:clamp(32px,9vw,48px); }
+}

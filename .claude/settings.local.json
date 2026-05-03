@@ -1,0 +1,22 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:api.anthropic.com)",
+      "PowerShell(Get-ChildItem \"c:\\\\Users\\\\Kiel\\\\Documents\\\\utech website\" -Recurse | Select-Object FullName, @{N=\"Size\\(KB\\)\";E={[math]::Round\\($_.Length/1KB,1\\)}})",
+      "Bash(Get-ChildItem -Path \"c:\\\\Users\\\\Kiel\\\\Documents\\\\utech website\" -Recurse -File)",
+      "Bash(Select-Object FullName)",
+      "Bash(Sort-Object FullName)",
+      "Bash(mkdir -p /c/Users/Kiel/.claude/projects/c--Users-Kiel-Documents-utech-website/design-bundle)",
+      "Bash(tar -xf /c/Users/Kiel/.claude/projects/c--Users-Kiel-Documents-utech-website/5fae7079-9c39-48b4-bd6d-5b5c982ee324/tool-results/design-decompressed.json -C /c/Users/Kiel/.claude/projects/c--Users-Kiel-Documents-utech-website/design-bundle)",
+      "Read(//c/Users/Kiel/.claude/projects/c--Users-Kiel-Documents-utech-website/design-bundle/**)",
+      "Bash(npm install *)",
+      "Bash(Get-ChildItem \"C:\\\\Users\\\\Kiel\\\\Documents\\\\utech website\\\\src\\\\hooks\")",
+      "Bash(Get-ChildItem \"C:\\\\Users\\\\Kiel\\\\Documents\\\\utech website\\\\src\\\\components\")",
+      "PowerShell(New-Item -ItemType Directory -Force -Path \"C:\\\\Users\\\\Kiel\\\\Documents\\\\utech website\\\\src\\\\hooks\")",
+      "PowerShell(New-Item -ItemType Directory -Force -Path \"C:\\\\Users\\\\Kiel\\\\Documents\\\\utech website\\\\src\\\\components\")",
+      "PowerShell(New-Item -ItemType Directory -Force -Path \"C:\\\\Users\\\\Kiel\\\\Documents\\\\utech website\\\\src\\\\pages\\\\Home\")",
+      "Bash(npm run *)",
+      "PowerShell(Get-ChildItem -Path \"c:\\\\Users\\\\Kiel\\\\Documents\\\\utech website\" -Recurse -File | ForEach-Object { $_.FullName })"
+    ]
+  }
+}
