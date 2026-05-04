@@ -112,7 +112,7 @@ export default function Robotics() {
             <a href="#projects" className="btn-ghost">See Projects</a>
           </div>
           <div className="div-stat-row">
-            {[['45','Members'],['9','Projects'],['5','Events / Sem']].map(([n,l])=>(
+            {[['24','Members'],['9','Projects'],['5','Events / Sem']].map(([n,l])=>(
               <div key={l}><div className="div-stat-num">{n}</div><div className="div-stat-label">{l}</div></div>
             ))}
           </div>

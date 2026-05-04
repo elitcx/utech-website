@@ -92,7 +92,7 @@ export default function Metaverse() {
             <a href="#projects" className="btn-ghost">See Projects</a>
           </div>
           <div className="div-stat-row">
-            {[['38','Members'],['6','Projects'],['4','Events / Sem']].map(([n,l])=>(
+            {[['31','Members'],['6','Projects'],['4','Events / Sem']].map(([n,l])=>(
               <div key={l}><div className="div-stat-num">{n}</div><div className="div-stat-label">{l}</div></div>
             ))}
           </div>

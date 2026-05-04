@@ -13,7 +13,7 @@ export default function CTA() {
         </div>
         <div className="cta-right reveal" ref={ref2}>
           <p className="cta-body">
-            Membership is free and open to all University of Regina students. Sign up, show up, and start building. No experience required — only curiosity.
+            Membership is free and open to all SMA Regina Pacis Surakarta students. Sign up, show up, and start building. No experience required — only curiosity.
           </p>
           <div className="cta-actions">
             <Link to="/join" className="btn-primary">Become a Member</Link>

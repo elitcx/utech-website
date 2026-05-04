@@ -6,25 +6,27 @@ import Footer from '../components/Footer';
 import '../styles/about.css';
 
 const TIMELINE = [
-  { date:'October 14, 2023', title:'URSU Technology is Founded', body:'Following the Integrated Learning 1 (IL 1) exhibition held on October 14, 2023. A small group of students at the University of Regina launched URSU Technology was established as a space for students of SMA-SMP Regina Pacis to explore and develop their potential in modern technology. ', color:'#5570f1' },
-  { date:'October 2024', title:'First Workshop Series', body:'We hosted our first three-part workshop series on web development, drawing over 60 attendees. It was our proof of concept — the demand for hands-on learning was real.', color:'#22c97a' },
-  { date:'January 2025', title:'Three Divisions Launched', body:'As membership grew past 50, we structured the community into three technical divisions: Metaverse, Robotics, and 3D Printing — each with dedicated leads and project tracks.', color:'#f5a232' },
-  { date:'March 2025', title:'Spring Hackathon — 24 hrs', body:'Our first internal hackathon ran for 24 hours and produced 8 working prototypes. Two went on to be showcased at the UR Innovation Fair.', color:'#5570f1' },
-  { date:'September 2025', title:'100 Members Milestone', body:'We crossed 100 active members at the start of the fall semester, welcoming a new cohort of first-year students with an expanded onboarding program.', color:'#22c97a' },
-  { date:'2026 — Present', title:'Expanding Horizons', body:'Now with 112+ members, active industry partnerships, and 6 ongoing projects, URSU Technology is growing into one of the most active student tech communities in Saskatchewan.', color:'#f5a232' },
+  { date:'October 14, 2023', title:'URSU Technology is Founded', body:'Following the Integrated Learning 1 (IL 1) exhibition held on October 14, 2023, URSU Technology was established as a space for students of SMA-SMP Regina Pacis to explore and develop their potential in modern technology.', color:'#5570f1' },
+  { date:'November 2023', title:'Robopark UKDW', body:'Competed at Robopark UKDW shortly after founding — our first major inter-university competition as an organization.', color:'#22c97a' },
+  { date:'February 2024', title:'Biztech 2024 — Binus University', body:'Placed at Biztech 2024 held at Binus University @Semarang (Feb 22–23), marking our first recognized inter-university competition result.', color:'#f5a232' },
+  { date:'October 2024', title:'First Workshop Series', body:'We hosted our first three-part workshop series on web development, drawing over 60 attendees. It was our proof of concept — the demand for hands-on learning was real.', color:'#5570f1' },
+  { date:'January 2025', title:'Three Divisions Launched', body:'We structured the community into three technical divisions: Metaverse, Robotics, and 3D Printing — each with dedicated leads and project tracks.', color:'#22c97a' },
+  { date:'March 2025', title:'Spring Hackathon — 24 hrs', body:'Our first internal hackathon ran for 24 hours and produced 8 working prototypes.', color:'#f5a232' },
+  { date:'2026 — Present', title:'Expanding Horizons', body:'Now with 62 members, 6 ongoing projects, and competition wins at UNS, UKDW, UNESA, PCU, and Ubaya, URSU Technology continues to grow as one of the most active student tech communities at SMA Regina Pacis.', color:'#5570f1' },
 ];
 
 // Set img: '/path/to/photo.jpg' to show a photo; leave null for the initials placeholder
 const TEAM = [
-  { name:'Alex K.',   role:'President',        div:'Community',  color:'#5570f1', initials:'AK', img:null },
-  { name:'Maya R.',   role:'VP Technical',     div:'Robotics',   color:'#22c97a', initials:'MR', img:null },
-  { name:'Jordan T.', role:'VP Events',        div:'Metaverse',  color:'#5570f1', initials:'JT', img:null },
-  { name:'Sam W.',    role:'Metaverse Lead',   div:'Metaverse',  color:'#5570f1', initials:'SW', img:null },
-  { name:'Priya N.',  role:'Robotics Lead',    div:'Robotics',   color:'#22c97a', initials:'PN', img:null },
-  { name:'Chris L.',  role:'3D Printing Lead', div:'3D Printing',color:'#f5a232', initials:'CL', img:null },
-  { name:'Dana M.',   role:'Communications',   div:'Community',  color:'#5570f1', initials:'DM', img:null },
-  { name:'Riley B.',  role:'Workshop Coord.',  div:'Community',  color:'#5570f1', initials:'RB', img:null },
-  { name:'Riley B.',  role:'Workshop Coord.',  div:'Community',  color:'#5570f1', initials:'RB', img:null },
+  { name:'Emmanuel Frederic S.',   role:'President',        div:'Community',  color:'#5570f1', initials:'EFC', img:null },
+  { name:'Clarisa Sanches T.D.A.',   role:'Vice President',     div:'Community',   color:'#5570f1', initials:'CSTDA', img:null },
+  { name:'Maria Tan H.S.A.T.', role:'Secretary',        div:'Community',  color:'#5570f1', initials:'MTHSAT', img:null },
+  { name:'Raphael Adrian K.',    role:'Secretary',   div:'Community',  color:'#5570f1', initials:'RAK', img:null },
+  { name:'Aloysius Sandy H.O.',  role:'Metaverse Lead',    div:'Metaverse',   color:'#5570f1', initials:'ASHO', img:null },
+  { name:'Darrel Kurniawan',  role:'Metaverse Vice Lead', div:'Metaverse',color:'#5570f1', initials:'DK', img:null },
+  { name:'Benediktus Hastu T.',   role:'Robotics Lead',   div:'Robotics',  color:'#22c97a', initials:'BHT', img:null },
+  { name:'Kenneth Jehezkiel M.W.',  role:'Robotics Vice Lead',  div:'Robotics',  color:'#5570f1', initials:'KJMW', img:null },
+  { name:'Carlos Keiran I.',  role:'3D Printing Lead',  div:'3D Printing',  color:'#f5a232', initials:'CKI', img:null },
+  { name:'Michael Satrio B.',  role:'3D Printing Vice Lead',  div:'3D Printing',  color:'#f5a232', initials:'MSB', img:null },
 ];
 
 // Set img: '/path/to/screenshot.jpg' to show a project image; leave null for the graphic placeholder
@@ -45,6 +47,8 @@ const GALLERY = [
   { label:'Industry Night',                  bg:'rgba(85,112,241,0.08)', hint:'Networking · Oct 2024',    img:null },
   { label:'AR Demo Day',           wide:true, bg:'rgba(85,112,241,0.08)', hint:'Demo · April 2025',        img:null },
   { label:'End-of-Year Social',              bg:'rgba(34,201,122,0.08)', hint:'Social · April 2025',      img:null },
+  { label:'Workshop Series Vol. 2',wide:true, bg:'rgba(245,162,50,0.08)', hint:'Workshop · 2025',          img:null },
+  { label:'Robotics Open House',             bg:'rgba(34,201,122,0.08)', hint:'Open House · 2025',        img:null },
 ];
 
 const VALUES = [
@@ -139,9 +143,9 @@ export default function About() {
         <div style={{position:'absolute',inset:0,background:'radial-gradient(ellipse 50% 60% at 70% 50%, rgba(85,112,241,0.07) 0%, transparent 70%)'}}/>
         <div className="about-hero-grid">
           <div style={{opacity:0,animation:'fadeUp 0.8s 0.2s ease forwards'}}>
-            <div className="about-hero-eyebrow">URSU TECHNOLOGY · EST. 2024</div>
+            <div className="about-hero-eyebrow">URSU TECHNOLOGY · EST. 2023</div>
             <h1 className="about-hero-title">We exist to make <em>builders</em> out of every student.</h1>
-            <p className="about-hero-sub">URSU Technology is the SMA Regina Pacis Surakarta's student-led tech community. We run workshops, trainings, and industry events — with three technical divisions and 60+ active members.</p>
+            <p className="about-hero-sub">URSU Technology is the SMA Regina Pacis Surakarta's student-led tech community. We run workshops, trainings, and industry events — with three technical divisions and 62 active members.</p>
             <div style={{display:'flex',gap:12,flexWrap:'wrap'}}>
               <Link to="/join" className="btn-primary">Join the Community</Link>
               <a href="#history" className="btn-ghost">Our Story</a>
@@ -149,7 +153,7 @@ export default function About() {
           </div>
           <div className="about-hero-right" style={{opacity:0,animation:'fadeUp 0.8s 0.4s ease forwards'}}>
             <div className="about-stat-grid">
-              {[['112+','Members','blue'],['3','Divisions','green'],['18+','Events / Year','amber'],['6','Active Projects','blue'],['2','Years Running','green'],['60+','Hours of Workshops','amber']].map(([n,l,c])=>(
+              {[['62','Members','blue'],['3','Divisions','green'],['13+','Events / Year','amber'],['6','Active Projects','blue'],['2','Years Running','green'],['2','Competition Wins','amber']].map(([n,l,c])=>(
                 <div className="about-stat" key={l}>
                   <div className={`about-stat-num${c==='green'?' green':c==='amber'?' amber':''}`}>{n}</div>
                   <div className="about-stat-label">{l}</div>
@@ -160,7 +164,7 @@ export default function About() {
         </div>
       </section>
 
-      <Marquee items={['Student-Led','University of Regina','Since 2024','Open to All','Build · Design · Explore','Saskatchewan','Community-First']}/>
+      <Marquee items={['Student-Led','SMA Regina Pacis','Since 2023','Open to All','Build · Design · Explore','Surakarta','Community-First']}/>
 
       {/* Values */}
       <section style={{borderBottom:'1px solid var(--border)'}}>
@@ -191,7 +195,7 @@ export default function About() {
                 <h2 style={{fontFamily:'var(--display)',fontSize:'clamp(28px,3vw,44px)',fontWeight:700,letterSpacing:'-0.02em',marginBottom:16}}>Built from the ground up</h2>
                 <p style={{fontSize:15,fontWeight:300,color:'var(--white-dim)',lineHeight:1.8,marginBottom:32}}>Ursuline Technology, abbreviated as U-Tech, is a community that grew and developed following the Integrated Learning 1 (IL 1) exhibition held on October 14, 2023. This community was established as a space for students of SMA-SMP Regina Pacis to explore and develop their potential in modern technology.<br/><br/>U-Tech is divided into three divisions, each focusing on a different aspect of technology: robotics, 3D printing, and metaverse. Each division is designed to provide its members with in-depth experience and knowledge, enabling them to grow in the field of technology they choose.</p>
                 <div style={{display:'flex',gap:10,flexWrap:'wrap'}}>
-                  {['2024','2025','2026'].map(y=><span key={y} className="tag-chip neutral">{y}</span>)}
+                  {['2023','2024','2025','2026'].map(y=><span key={y} className="tag-chip neutral">{y}</span>)}
                 </div>
               </div>
               <div className="timeline">

@@ -104,7 +104,7 @@ export default function Printing() {
             <a href="#projects" className="btn-ghost">See Projects</a>
           </div>
           <div className="div-stat-row">
-            {[['29','Members'],['16','Projects'],['4','Events / Sem']].map(([n,l])=>(
+            {[['22','Members'],['16','Projects'],['4','Events / Sem']].map(([n,l])=>(
               <div key={l}><div className="div-stat-num">{n}</div><div className="div-stat-label">{l}</div></div>
             ))}
           </div>

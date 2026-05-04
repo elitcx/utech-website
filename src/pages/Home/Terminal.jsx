@@ -36,15 +36,15 @@ const COMMANDS = {
   events: () => [
     { type:'blue', text:'Upcoming Events' },
     { type:'spacer' },
-    { type:'green',  text:'  MAY 03   Spring Hackathon 2026          [ED 209]' },
-    { type:'out',    text:'  MAY 17   AI & Machine Learning Workshop  [CK 230]' },
-    { type:'amber',  text:'  JUN 06   Industry Night — Summer Edition [Riddell Centre]' },
-    { type:'out',    text:'  JUN 21   End-of-Year Showcase & Social   [RI Centre]' },
+    { type:'green',  text:'  MAY 03   Spring Hackathon 2026          [Smart Classroom 2]' },
+    { type:'out',    text:'  MAY 17   AI & Machine Learning Workshop  [Smart Classroom 2]' },
+    { type:'amber',  text:'  JUN 06   Industry Night — Summer Edition [SMA Regina Pacis]' },
+    { type:'out',    text:'  JUN 21   End-of-Year Showcase & Social   [SMA Regina Pacis]' },
     { type:'spacer' },
   ],
   members: () => [
     { type:'out', text:'Total members:' },
-    { type:'green', text:'  112 active  ·  Metaverse: 38  ·  Robotics: 45  ·  3D Printing: 29' },
+    { type:'green', text:'  62 active  ·  Metaverse: 31  ·  Robotics: 24  ·  3D Printing: 22' },
     { type:'spacer' },
   ],
   projects: () => [
@@ -63,8 +63,8 @@ const COMMANDS = {
   whoami: () => [
     { type:'blue', text:'URSU Technology' },
     { type:'spacer' },
-    { type:'out', text:'  University of Regina Student Union — Tech Community' },
-    { type:'out', text:'  Founded: 2024  ·  Open to all UR students' },
+    { type:'out', text:'  SMA Regina Pacis Surakarta — Student Tech Community' },
+    { type:'out', text:'  Founded: 2023  ·  Open to all Regina Pacis students' },
     { type:'out', text:'  Focus: Build · Design · Explore · Connect · Compete · Ship' },
     { type:'spacer' },
     { type:'green', text:'  discord.gg/ursutech  ·  instagram: @ursutech' },

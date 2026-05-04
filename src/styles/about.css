@@ -68,7 +68,7 @@
 .portfolio-status { font-family: var(--mono); font-size: 9px; letter-spacing: 0.1em; padding: 3px 8px; border-radius: 2px; text-transform: uppercase; display: inline-block; margin-top: 12px; }
 
 /* Gallery */
-.gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 180px; gap: 8px; }
+.gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 240px; gap: 8px; }
 .gallery-grid .wide { grid-column: span 2; }
 .gallery-grid .tall { grid-row: span 2; }
 .gallery-item { border-radius: 6px; overflow: hidden; position: relative; background: var(--bg3); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; cursor: default; transition: border-color 0.2s; }

@@ -272,7 +272,7 @@ const DIV_DATA = [
     title:'Metaverse', titleSub:'& Web Design',
     desc:'Building immersive spatial experiences at the intersection of virtual reality, augmented reality, and real-time 3D.',
     tags:['Unity','Spatial UI','AR / VR','Shaders','Three.js'],
-    btnClass:'', members:38, projects:12,
+    btnClass:'', members:31, projects:12, path:'/metaverse',
   },
   {
     div:'robotics', num:'02',
@@ -282,7 +282,7 @@ const DIV_DATA = [
     title:'Robotics', titleSub:'& Embedded Systems',
     desc:'Designing autonomous machines — from 3-DOF arms to computer vision pipelines — that interact with the physical world.',
     tags:['ROS2','Arduino','OpenCV','Raspberry Pi','Kinematics','C++'],
-    btnClass:'green-btn', members:45, projects:9,
+    btnClass:'green-btn', members:24, projects:9, path:'/robotics',
   },
   {
     div:'printing', num:'03',
@@ -292,7 +292,7 @@ const DIV_DATA = [
     title:'3D Printing', titleSub:'& Rapid Prototyping',
     desc:'Turning digital designs into physical objects — FDM, resin, parametric CAD, and iterative hardware prototyping.',
     tags:['Fusion 360','FDM / SLA','OpenSCAD','Slicing','PLA / PETG','CAD'],
-    btnClass:'amber-btn', members:29, projects:16,
+    btnClass:'amber-btn', members:22, projects:16, path:'/printing',
   },
 ];
 
@@ -350,7 +350,7 @@ export default function Hero() {
         </div>
 
         {/* Mobile division dots */}
-        <div className="hero-mobile-dots" style={{display:'none'}}>
+        <div className="hero-mobile-dots">
           {DIV_DATA.map((item, i) => (
             <div
               key={i}
@@ -423,7 +423,8 @@ export default function Hero() {
               <div className="hero-stat-label">Projects</div>
             </div>
             <div className="hero-info-actions">
-              <Link to="/join" className={`btn-primary ${d.btnClass}`}>Join Division</Link>
+              <Link to="/join" className={`btn-primary ${d.btnClass}`}>Join</Link>
+              <Link to={d.path} className="btn-ghost">Learn More</Link>
             </div>
           </div>
         </div>

@@ -12,7 +12,7 @@ const DIVISIONS = [
     iconBg: 'rgba(85,112,241,0.1)',
     desc: 'Building immersive XR experiences — from VR worlds and spatial UI to WebGL shaders and game engines.',
     tags: ['Unity', 'WebXR', 'Spatial UI', 'AR/VR', 'Shaders', 'Three.js'],
-    members: 38, projects: 12,
+    members: 31, projects: 12,
     projects_list: [
       { name: 'Campus AR Navigator', status: 'Active' },
       { name: 'VR Physics Sandbox', status: 'Active' },
@@ -34,7 +34,7 @@ const DIVISIONS = [
     iconBg: 'rgba(34,201,122,0.08)',
     desc: 'Designing and programming autonomous machines — robotic arms, rovers, embedded systems, and computer vision.',
     tags: ['ROS2', 'Arduino', 'OpenCV', 'Raspberry Pi', 'Kinematics', 'C++'],
-    members: 45, projects: 9,
+    members: 24, projects: 9,
     projects_list: [
       { name: '3-DOF Arm Controller', status: 'Active' },
       { name: 'Autonomous Line Follower', status: 'Shipped' },
@@ -58,7 +58,7 @@ const DIVISIONS = [
     iconBg: 'rgba(245,162,50,0.08)',
     desc: 'Rapid prototyping from CAD to physical object — FDM, SLA resin, parametric design, and hardware iteration.',
     tags: ['Fusion 360', 'FDM/SLA', 'OpenSCAD', 'Slicing', 'PLA/PETG', 'CAD'],
-    members: 29, projects: 16,
+    members: 22, projects: 16,
     projects_list: [
       { name: 'Modular Enclosure System', status: 'Active' },
       { name: 'Custom Robotics Mounts', status: 'Shipped' },
