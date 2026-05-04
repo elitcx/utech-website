@@ -24,7 +24,7 @@ const TEAM = [
   { name:'Aloysius Sandy H.O.',  role:'Metaverse Lead',    div:'Metaverse',   color:'#5570f1', initials:'ASHO', img:null },
   { name:'Darrel Kurniawan',  role:'Metaverse Vice Lead', div:'Metaverse',color:'#5570f1', initials:'DK', img:null },
   { name:'Benediktus Hastu T.',   role:'Robotics Lead',   div:'Robotics',  color:'#22c97a', initials:'BHT', img:null },
-  { name:'Kenneth Jehezkiel M.W.',  role:'Robotics Vice Lead',  div:'Robotics',  color:'#5570f1', initials:'KJMW', img:null },
+  { name:'Kenneth Jehezkiel M.W.',  role:'Robotics Vice Lead',  div:'Robotics',  color:'#22c97a', initials:'KJMW', img:null },
   { name:'Carlos Keiran I.',  role:'3D Printing Lead',  div:'3D Printing',  color:'#f5a232', initials:'CKI', img:null },
   { name:'Michael Satrio B.',  role:'3D Printing Vice Lead',  div:'3D Printing',  color:'#f5a232', initials:'MSB', img:null },
 ];
