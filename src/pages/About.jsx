@@ -11,8 +11,7 @@ const TIMELINE = [
   { date:'February 2024', title:'Biztech 2024 — Binus University', body:'Placed at Biztech 2024 held at Binus University @Semarang (Feb 22–23), marking our first recognized inter-university competition result.', color:'#f5a232' },
   { date:'October 2024', title:'First Workshop Series', body:'We hosted our first three-part workshop series on web development, drawing over 60 attendees. It was our proof of concept — the demand for hands-on learning was real.', color:'#5570f1' },
   { date:'January 2025', title:'Three Divisions Launched', body:'We structured the community into three technical divisions: Metaverse, Robotics, and 3D Printing — each with dedicated leads and project tracks.', color:'#22c97a' },
-  { date:'March 2025', title:'Spring Hackathon — 24 hrs', body:'Our first internal hackathon ran for 24 hours and produced 8 working prototypes.', color:'#f5a232' },
-  { date:'2026 — Present', title:'Expanding Horizons', body:'Now with 62 members, 6 ongoing projects, and competition wins at UNS, UKDW, UNESA, PCU, and Ubaya, URSU Technology continues to grow as one of the most active student tech communities at SMA Regina Pacis.', color:'#5570f1' },
+  { date:'2026 — Present', title:'Expanding Horizons', body:'Now with 62 members, 6 ongoing projects, and competition wins at UNS, UKDW, UNESA, PCU, and Ubaya, URSU Technology continues to grow as one of the most active student tech communities at SMA Regina Pacis.', color:'#f5a232' },
 ];
 
 // Set img: '/path/to/photo.jpg' to show a photo; leave null for the initials placeholder
@@ -153,7 +152,7 @@ export default function About() {
           </div>
           <div className="about-hero-right" style={{opacity:0,animation:'fadeUp 0.8s 0.4s ease forwards'}}>
             <div className="about-stat-grid">
-              {[['62','Members','blue'],['3','Divisions','green'],['13+','Events / Year','amber'],['6','Active Projects','blue'],['2','Years Running','green'],['2','Competition Wins','amber']].map(([n,l,c])=>(
+              {[['62','Members','blue'],['3','Divisions','green'],['13+','Events / Year','amber'],['6','Active Projects','blue'],['3+','Years Running','green'],['5+','Competition Wins','amber']].map(([n,l,c])=>(
                 <div className="about-stat" key={l}>
                   <div className={`about-stat-num${c==='green'?' green':c==='amber'?' amber':''}`}>{n}</div>
                   <div className="about-stat-label">{l}</div>

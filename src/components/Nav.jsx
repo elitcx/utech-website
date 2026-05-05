@@ -43,7 +43,7 @@ export default function Nav() {
           <div className="nav-logo-img">
             <img src="/uploads/logo.png" alt="URSU Technology" />
           </div>
-          <span className="nav-logo-text"><span>URSU</span> TECHNOLOGY</span>
+          <span className="nav-logo-text"><span>URSULINE</span> TECHNOLOGY</span>
         </Link>
 
         <ul className="nav-links">
