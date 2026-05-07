@@ -1,12 +1,20 @@
 import { Link } from 'react-router-dom';
 import { useReveal } from '../../hooks/useReveal';
+import { ALL_EVENTS, TYPE_TAG_STYLE, isUpcoming } from '../../data/events';
 
-const events = [
-  { month: 'MAY', day: '03', name: 'Spring Hackathon 2026', location: 'Smart Classroom 2, SMA Regina Pacis Surakarta', time: '9:00 AM – 9:00 PM', tag: 'Hackathon', tagStyle: 'blue' },
-  { month: 'MAY', day: '17', name: 'AI & Machine Learning Workshop', location: 'Smart Classroom 2, SMA Regina Pacis Surakarta', time: '2:00 PM – 4:30 PM', tag: 'Workshop', tagStyle: 'green' },
-  { month: 'JUN', day: '06', name: 'Industry Night — Summer Edition', location: 'Smart Classroom 2, SMA Regina Pacis Surakarta', time: '5:30 PM – 8:00 PM', tag: 'Networking', tagStyle: 'amber' },
-  { month: 'JUN', day: '21', name: 'End-of-Year Showcase & Social', location: 'Smart Classroom 2, SMA Regina Pacis Surakarta', time: '3:00 PM – 6:00 PM', tag: 'Social', tagStyle: 'green' },
-];
+const events = ALL_EVENTS
+  .filter(isUpcoming)
+  .slice(0, 4)
+  .map(e => ({
+    month: e.month,
+    day: e.day,
+    year: e.year,
+    name: e.title,
+    location: e.location,
+    time: e.time,
+    tag: e.type,
+    tagStyle: TYPE_TAG_STYLE[e.type] ?? 'blue',
+  }));
 
 export default function HomeEvents() {
   const ref = useReveal();
@@ -27,7 +35,7 @@ export default function HomeEvents() {
               <div className="event-row" key={i}>
                 <div className="event-date">
                   <strong>{e.day}</strong>
-                  {e.month} 2026
+                  {e.month} {e.year}
                 </div>
                 <div className="event-info">
                   <div className="event-name">{e.name}</div>
