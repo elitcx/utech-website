@@ -21,8 +21,8 @@ const PERKS = [
 { icon: '🏆', title: 'Competitions', desc: 'Hackathons, CTFs, and design challenges with real prizes.' },
 { icon: '🤝', title: 'Industry Network', desc: 'Connect with professionals at our networking events.' },
 { icon: '🎓', title: 'Workshops', desc: '13+ workshops per year on in-demand technical skills.' },
-{ icon: '🖨️', title: 'Print Lab Access', desc: 'Supervised access to FDM and SLA printers.' },
-{ icon: '💬', title: 'Discord Community', desc: 'Active server with 62 members and live help.' },
+{ icon: '🖨️', title: 'Print Lab Access', desc: 'Supervised access to the Bambu Lab X1 Carbon — high-speed CoreXY with 16-colour AMS.' },
+{ icon: '📸', title: 'Instagram Community', desc: 'Follow us @ursutech for updates, highlights, and announcements.' },
 { icon: '🚀', title: 'Mentorship', desc: 'Pair with experienced members on challenging projects.' },
 { icon: '📄', title: 'Portfolio Projects', desc: 'Build real things you can put on your resume.' }];
 
@@ -181,13 +181,19 @@ export default function Join() {
               <div className="faq-list">
                 {FAQS.map((f, i) =>
                   <div className="faq-item" key={i}>
-                    <div className="faq-q" onClick={() => setOpenFaq(openFaq === i ? null : i)}>
+                    <button
+                      type="button"
+                      className="faq-q"
+                      onClick={() => setOpenFaq(openFaq === i ? null : i)}
+                      aria-expanded={openFaq === i}
+                      aria-controls={`faq-answer-${i}`}
+                    >
                       <span className="faq-q-text">{f.q}</span>
                       <svg className={`faq-chevron${openFaq === i ? ' open' : ''}`} width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                         <polyline points="6 9 12 15 18 9" />
                       </svg>
-                    </div>
-                    <div className={`faq-a${openFaq === i ? ' open' : ''}`}>
+                    </button>
+                    <div id={`faq-answer-${i}`} className={`faq-a${openFaq === i ? ' open' : ''}`}>
                       <p className="faq-a-inner">{f.a}</p>
                     </div>
                   </div>

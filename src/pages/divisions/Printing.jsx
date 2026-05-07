@@ -4,6 +4,7 @@ import { useReveal } from '../../hooks/useReveal';
 import Nav from '../../components/Nav';
 import Marquee from '../../components/Marquee';
 import Footer from '../../components/Footer';
+import { DIVISION_PROJECTS, STATUS_COLORS } from '../../data/projects';
 import '../../styles/divisions.css';
 
 function PrinterCanvas() {
@@ -64,24 +65,17 @@ function PrinterCanvas() {
   return <canvas ref={canvasRef} width={400} height={420} style={{display:'block'}}/>;
 }
 
-const PROJECTS = [
-  {name:'Modular Enclosure System',desc:'Parametric Fusion 360 library generating snap-fit enclosures for arbitrary PCB sizes. Used by Robotics and Metaverse divisions.',tags:['Fusion 360','FDM','Parametric','PLA'],status:'Active',sc:'#22c97a'},
-  {name:'Parametric Keyboard Case',desc:'OpenSCAD-based generator for custom mechanical keyboard cases — adjustable layout, plate mount, and tray configurations.',tags:['OpenSCAD','FDM','3MF','PETG'],status:'Active',sc:'#22c97a'},
-  {name:'Robotic Gripper Fingers',desc:"SLA-printed compliant gripper fingers with adjustable stiffness profiles for the Robotics division's arm builds.",tags:['Resin','SLA','Compliant Mech','CAD'],status:'Shipped',sc:'rgba(255,255,255,0.3)'},
-  {name:'Custom Drone Frame',desc:'FDM-printed carbon fiber composite drone frame designed for lightweight, crash-tolerant autonomous flight experiments.',tags:['FDM','CF-PLA','Drone','Fusion 360'],status:'In Progress',sc:'#5570f1'},
-  {name:'Bio-inspired Lattice Prints',desc:'Exploring gyroid and Schwartz P lattice infills for ultra-light structural parts using variable density slicing.',tags:['Cura','Lattice','PLA','Structural'],status:'In Progress',sc:'#5570f1'},
-  {name:'Accessible Device Mounts',desc:'A library of 3D-printable assistive device mounts for wheelchairs and mobility aids, open-sourced on GitHub.',tags:['FDM','PETG','Open Source','Impact'],status:'Shipped',sc:'rgba(255,255,255,0.3)'},
-];
+const PROJECTS = DIVISION_PROJECTS.printing;
 
 const TECH = [
-  {name:'Fusion 360',desc:'Parametric CAD design'},{name:'OpenSCAD',desc:'Programmatic 3D modelling'},{name:'Cura / PrusaSlicer',desc:'FDM slicing'},{name:'ChituBox',desc:'Resin slicing & supports'},
-  {name:'FDM Printing',desc:'Fused deposition modelling'},{name:'SLA / MSLA',desc:'Resin UV printing'},{name:'PLA / PETG / ABS',desc:'Common filaments'},{name:'Blender',desc:'Organic & sculpt forms'},
+  {name:'Fusion 360',desc:'Parametric CAD design'},{name:'OpenSCAD',desc:'Programmatic 3D modelling'},{name:'Bambu Studio / OrcaSlicer',desc:'FDM slicing & tuning'},{name:'Multi-Colour AMS',desc:'16-filament automated material system'},
+  {name:'CoreXY High-Speed',desc:'Up to 20,000 mm/s² acceleration'},{name:'Pressure Advance',desc:'Vibration compensation & flow tuning'},{name:'PLA / PETG / ABS / CF',desc:'FDM & abrasive filaments'},{name:'Blender',desc:'Organic & sculpt forms'},
 ];
 
 const LEARN = [
-  {title:'Open Print Nights',sub:'Tuesdays · Print Lab',icon:<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f5a232" strokeWidth="1.5"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>},
+  {title:'Open Print Nights',sub:'Monthly · Print Lab',icon:<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f5a232" strokeWidth="1.5"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>},
   {title:'CAD Design Workshop',sub:'Monthly · Open to all',icon:<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f5a232" strokeWidth="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>},
-  {title:'Slicer Settings Deep-Dive',sub:'Bi-weekly · Discord',icon:<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f5a232" strokeWidth="1.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>},
+  {title:'Slicer Settings Deep-Dive',sub:'Monthly · Instagram',icon:<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f5a232" strokeWidth="1.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>},
   {title:'Material Science Talk',sub:'Quarterly · All welcome',icon:<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f5a232" strokeWidth="1.5"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m0 0h18"/></svg>},
 ];
 
@@ -95,9 +89,9 @@ export default function Printing() {
         <div className="div-hero-content" style={{opacity:0,animation:'fadeUp 0.8s 0.2s ease forwards'}}>
           <div className="div-hero-badge"><div className="div-hero-badge-dot"/>3D Printing Division · 03</div>
           <h1 className="div-hero-title">3D Printing<br/><span style={{color:'var(--white)',fontSize:'0.65em',fontWeight:600}}>& Rapid Prototyping</span></h1>
-          <p className="div-hero-sub">Turning digital designs into physical objects — FDM, resin casting, parametric CAD, and iterative hardware prototyping for every division and project.</p>
+          <p className="div-hero-sub">Turning digital designs into physical objects — high-speed CoreXY FDM, multi-colour AMS printing, parametric CAD, and iterative hardware prototyping for every division and project.</p>
           <div style={{display:'flex',flexWrap:'wrap',gap:8,marginBottom:32}}>
-            {['Fusion 360','FDM / SLA','OpenSCAD','Slicing','PLA / PETG','CAD'].map(t=><span key={t} className="tag-chip amber">{t}</span>)}
+            {['Fusion 360','CoreXY / AMS','OpenSCAD','Bambu Studio','PLA / PETG / CF','CAD'].map(t=><span key={t} className="tag-chip amber">{t}</span>)}
           </div>
           <div style={{display:'flex',gap:12}}>
             <Link to="/join" className="btn-primary amber-btn">Join Division</Link>
@@ -112,7 +106,7 @@ export default function Printing() {
         <div className="div-hero-canvas"><PrinterCanvas/></div>
       </section>
 
-      <Marquee items={['Fusion 360','FDM Printing','Resin SLA','OpenSCAD','PrusaSlicer','PETG / PLA','Rapid Prototyping','Parametric CAD','Lattice Design']} color="amber"/>
+      <Marquee items={['Fusion 360','FDM Printing','CoreXY High-Speed','OpenSCAD','Bambu Studio','PETG / PLA / CF','Rapid Prototyping','Parametric CAD','Multi-Material AMS']} color="amber"/>
 
       <section id="projects" style={{borderBottom:'1px solid var(--border)'}}>
         <div className="section-inner">
@@ -126,7 +120,7 @@ export default function Printing() {
                   <div className="project-card-name">{p.name}</div>
                   <p className="project-card-desc">{p.desc}</p>
                   <div className="project-card-tags">{p.tags.map(t=><span key={t} className="project-card-tag">{t}</span>)}</div>
-                  <div className="project-status" style={{color:p.sc,background:p.sc+'18',border:`1px solid ${p.sc}33`}}>{p.status}</div>
+                  <div className="project-status" style={{color:STATUS_COLORS[p.status],background:STATUS_COLORS[p.status]+'18',border:`1px solid ${STATUS_COLORS[p.status]}33`}}>{p.status}</div>
                 </div>
               ))}
             </div>
@@ -141,11 +135,11 @@ export default function Printing() {
               <div>
                 <div className="section-label amber">PRINT SPECS</div>
                 <h2 style={{fontFamily:'var(--display)',fontSize:'clamp(24px,2.5vw,36px)',fontWeight:700,letterSpacing:'-0.02em',marginBottom:16}}>Our lab setup</h2>
-                <p style={{fontSize:14,fontWeight:300,color:'var(--white-dim)',lineHeight:1.8,marginBottom:28}}>The 3D Printing division operates two FDM printers and one MSLA resin unit. Members get supervised access during open print nights and can run prints for any division project.</p>
+                <p style={{fontSize:14,fontWeight:300,color:'var(--white-dim)',lineHeight:1.8,marginBottom:28}}>The 3D Printing division operates a Bambu Lab X1 Carbon COMBO with AMS — a high-speed CoreXY printer with Lidar-assisted error detection and 16-colour multi-material support. Members get supervised access during open print nights and can run prints for any division project.</p>
               </div>
               <div className="print-widget">
                 <div className="print-widget-title">Lab Equipment</div>
-                {[['FDM Printer 1','Prusa MK4S · 0.4mm nozzle'],['FDM Printer 2','Bambu Lab A1 · Multi-colour'],['Resin Unit','Elegoo Saturn 3 Ultra · MSLA'],['Build Vol. (FDM)','250 × 210 × 220 mm'],['Layer Height','0.05 mm – 0.35 mm'],['Materials','PLA, PETG, ABS, TPU, Resin']].map(([k,v])=>(
+                {[['FDM Printer','Bambu Lab X1 Carbon COMBO · AMS · CoreXY · Lidar'],['Feeder System','Direct · Single nozzle · 0.4 mm'],['Build Volume','256 × 256 × 256 mm'],['Max Temperature','Hotend 300 °C · Bed 110 °C'],['Connectivity','Wi-Fi · microSD · Camera'],['Materials','PLA, PETG, ABS, TPU · Up to 16 colours via AMS']].map(([k,v])=>(
                   <div className="print-param" key={k}>
                     <span className="print-param-label">{k}</span>
                     <span className="print-param-val">{v}</span>
@@ -176,7 +170,7 @@ export default function Printing() {
               <div>
                 <div className="section-label amber">GET INVOLVED</div>
                 <h2 style={{fontFamily:'var(--display)',fontSize:'clamp(24px,2.5vw,36px)',fontWeight:700,letterSpacing:'-0.02em',marginBottom:16}}>How to participate</h2>
-                <p style={{fontSize:14,fontWeight:300,color:'var(--white-dim)',lineHeight:1.8,marginBottom:28}}>Tuesdays are open print nights — bring a model or learn CAD from scratch. Monthly workshops cover everything from Fusion 360 basics to advanced slicer techniques and material science.</p>
+                <p style={{fontSize:14,fontWeight:300,color:'var(--white-dim)',lineHeight:1.8,marginBottom:28}}>Monthly open print nights — bring a model or learn CAD from scratch. Monthly workshops cover everything from Fusion 360 basics to advanced slicer techniques and material science.</p>
                 <Link to="/join" className="btn-primary amber-btn">Join 3D Printing Division</Link>
               </div>
               <div className="learn-grid">

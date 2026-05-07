@@ -4,6 +4,7 @@ import { useReveal } from '../../hooks/useReveal';
 import Nav from '../../components/Nav';
 import Marquee from '../../components/Marquee';
 import Footer from '../../components/Footer';
+import { DIVISION_PROJECTS, STATUS_COLORS } from '../../data/projects';
 import '../../styles/divisions.css';
 
 function HeroCanvas() {
@@ -45,30 +46,23 @@ function HeroCanvas() {
   return <canvas ref={canvasRef} width={440} height={440} style={{display:'block'}}/>;
 }
 
-const PROJECTS = [
-  {name:'Campus AR Navigator',desc:'An AR app built in Unity that overlays real-time wayfinding and room information onto the UR campus using image anchors and GPS.',tags:['Unity','ARCore','C#','GPS'],status:'Active',statusColor:'#22c97a'},
-  {name:'VR Physics Sandbox',desc:'Interactive WebXR environment for visualising physics simulations — gravity, fluid dynamics, and collision modelling in real-time VR.',tags:['WebXR','Three.js','JavaScript','Physics'],status:'Active',statusColor:'#22c97a'},
-  {name:'Procedural World Gen',desc:'A Unity project exploring procedural terrain and building generation for open-world XR environments using noise functions.',tags:['Unity','C#','Shaders','PCG'],status:'In Progress',statusColor:'#5570f1'},
-  {name:'Spatial UI Toolkit',desc:'A reusable library of 3D UI components — panels, buttons, sliders — designed for immersive XR interfaces in WebXR and Unity.',tags:['WebXR','React','Three.js','UX'],status:'Shipped',statusColor:'rgba(255,255,255,0.3)'},
-  {name:'AR Study Room',desc:'An augmented reality study companion that pins virtual notes, timers, and reminders to physical locations in a real room.',tags:['ARKit','Swift','UX','iOS'],status:'In Progress',statusColor:'#5570f1'},
-  {name:'Metaverse Storefront',desc:'A proof-of-concept virtual storefront in WebGL — browsing products in 3D space with realistic lighting and physics.',tags:['WebGL','Three.js','Blender','E-commerce'],status:'Shipped',statusColor:'rgba(255,255,255,0.3)'},
-];
+const PROJECTS = DIVISION_PROJECTS.metaverse;
 
 const TECH = [
-  {name:'Unity',desc:'Game engine for VR/AR builds'},
-  {name:'WebXR',desc:'Browser-based XR APIs'},
-  {name:'Three.js',desc:'3D in the browser'},
-  {name:'Blender',desc:'3D modelling & animation'},
-  {name:'ARCore/Kit',desc:'Mobile AR frameworks'},
+  {name:'Unity',desc:'Game engine for 2D/3D builds'},
+  {name:'Godot',desc:'Open-source game engine'},
+  {name:'React',desc:'Component-based web UIs'},
+  {name:'Blender',desc:'3D modelling & game assets'},
+  {name:'Figma',desc:'UI/UX design & prototyping'},
   {name:'C# / JS',desc:'Primary code languages'},
-  {name:'GLSL Shaders',desc:'Custom visual effects'},
-  {name:'Unreal 5',desc:'High-fidelity environments'},
+  {name:'HTML / CSS',desc:'Web structure & styling'},
+  {name:'Tailwind CSS',desc:'Utility-first styling'},
 ];
 
 const LEARN = [
-  {title:'Weekly Build Nights',sub:'Every Thursday · ED 209',icon:<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5570f1" strokeWidth="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>},
-  {title:'XR Design Workshop',sub:'Monthly · Open to all',icon:<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5570f1" strokeWidth="1.5"><circle cx="12" cy="12" r="10"/><path d="M8 12s1.5-4 4-4 4 4 4 4-1.5 4-4 4-4-4-4-4z"/><circle cx="12" cy="12" r="1"/></svg>},
-  {title:'Shader Study Group',sub:'Bi-weekly · Discord',icon:<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5570f1" strokeWidth="1.5"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><line x1="2" y1="12" x2="12" y2="17"/><line x1="22" y1="12" x2="12" y2="17"/></svg>},
+  {title:'Monthly Build Nights',sub:'Monthly · ED 209',icon:<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5570f1" strokeWidth="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>},
+  {title:'Game Design Workshop',sub:'Monthly · Open to all',icon:<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5570f1" strokeWidth="1.5"><circle cx="12" cy="12" r="10"/><path d="M8 12s1.5-4 4-4 4 4 4 4-1.5 4-4 4-4-4-4-4z"/><circle cx="12" cy="12" r="1"/></svg>},
+  {title:'Web Design Study Group',sub:'Monthly · Instagram',icon:<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5570f1" strokeWidth="1.5"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><line x1="2" y1="12" x2="12" y2="17"/><line x1="22" y1="12" x2="12" y2="17"/></svg>},
   {title:'Industry Speaker Series',sub:'Quarterly · Open to all',icon:<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5570f1" strokeWidth="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>},
 ];
 
@@ -81,11 +75,11 @@ export default function Metaverse() {
       <section className="div-hero" style={{borderBottom:'1px solid var(--border)'}}>
         <div className="div-hero-bg"/><div className="div-hero-grid"/>
         <div className="div-hero-content" style={{opacity:0,animation:'fadeUp 0.8s 0.2s ease forwards'}}>
-          <div className="div-hero-badge"><div className="div-hero-badge-dot"/>Metaverse Division · 01</div>
-          <h1 className="div-hero-title">Metaverse<br/><span style={{color:'var(--white)',fontSize:'0.65em',fontWeight:600}}>& XR Design</span></h1>
-          <p className="div-hero-sub">Building immersive spatial experiences at the intersection of virtual reality, augmented reality, game design, and real-time 3D rendering.</p>
+          <div className="div-hero-badge"><div className="div-hero-badge-dot"/>Game Design & Web Design Division · 01</div>
+          <h1 className="div-hero-title">Game Design<br/><span style={{color:'var(--white)',fontSize:'0.65em',fontWeight:600}}>& Web Design</span></h1>
+          <p className="div-hero-sub">Building interactive games and polished web experiences at the intersection of game mechanics, creative coding, and modern web development.</p>
           <div className="div-hero-tags">
-            {['Unity','WebXR','Spatial UI','AR / VR','Shaders','Three.js'].map(t=><span key={t} className="tag-chip">{t}</span>)}
+            {['Unity','Godot','React','HTML/CSS','Figma','JavaScript'].map(t=><span key={t} className="tag-chip">{t}</span>)}
           </div>
           <div style={{display:'flex',gap:12}}>
             <Link to="/join" className="btn-primary">Join Division</Link>
@@ -100,7 +94,7 @@ export default function Metaverse() {
         <div className="div-hero-canvas"><HeroCanvas/></div>
       </section>
 
-      <Marquee items={['Unity','WebXR','Spatial Computing','ARCore','Three.js','GLSL Shaders','Blender','Virtual Reality','Augmented Reality']}/>
+      <Marquee items={['Unity','Godot','React','HTML/CSS','JavaScript','Figma','Blender','Game Design','Web Development']}/>
 
       {/* Projects */}
       <section id="projects" style={{borderBottom:'1px solid var(--border)'}}>
@@ -111,11 +105,11 @@ export default function Metaverse() {
             <div className="project-grid">
               {PROJECTS.map(p=>(
                 <div className="project-card" key={p.name}>
-                  <div className="project-card-div">Metaverse</div>
+                  <div className="project-card-div">Game Design & Web Design</div>
                   <div className="project-card-name">{p.name}</div>
                   <p className="project-card-desc">{p.desc}</p>
                   <div className="project-card-tags">{p.tags.map(t=><span key={t} className="project-card-tag">{t}</span>)}</div>
-                  <div className="project-status" style={{color:p.statusColor,background:p.statusColor+'18',border:`1px solid ${p.statusColor}33`}}>{p.status}</div>
+                  <div className="project-status" style={{color:STATUS_COLORS[p.status],background:STATUS_COLORS[p.status]+'18',border:`1px solid ${STATUS_COLORS[p.status]}33`}}>{p.status}</div>
                 </div>
               ))}
             </div>
@@ -149,8 +143,8 @@ export default function Metaverse() {
               <div>
                 <div className="section-label">GET INVOLVED</div>
                 <h2 style={{fontFamily:'var(--display)',fontSize:'clamp(24px,2.5vw,36px)',fontWeight:700,letterSpacing:'-0.02em',marginBottom:16}}>How to participate</h2>
-                <p style={{fontSize:14,fontWeight:300,color:'var(--white-dim)',lineHeight:1.8,marginBottom:28}}>The Metaverse division meets weekly for build nights and runs a monthly XR design workshop open to all members. No experience required — just curiosity and willingness to learn.</p>
-                <Link to="/join" className="btn-primary">Join Metaverse Division</Link>
+                <p style={{fontSize:14,fontWeight:300,color:'var(--white-dim)',lineHeight:1.8,marginBottom:28}}>The Game Design & Web Design division holds monthly build nights and runs a monthly game design workshop open to all members. No experience required — just curiosity and willingness to learn.</p>
+                <Link to="/join" className="btn-primary">Join Game Design & Web Design</Link>
               </div>
               <div className="learn-grid">
                 {LEARN.map(l=>(
@@ -167,7 +161,7 @@ export default function Metaverse() {
 
       <div className="cta-div">
         <div className="cta-div-inner">
-          <h2 style={{fontFamily:'var(--display)',fontSize:'clamp(24px,3vw,40px)',fontWeight:700,letterSpacing:'-0.02em'}}>Ready to build in <span style={{color:'var(--accent)'}}>3D space</span>?</h2>
+          <h2 style={{fontFamily:'var(--display)',fontSize:'clamp(24px,3vw,40px)',fontWeight:700,letterSpacing:'-0.02em'}}>Ready to build <span style={{color:'var(--accent)'}}>games & websites</span>?</h2>
           <div style={{display:'flex',gap:12,flexShrink:0,flexWrap:'wrap'}}>
             <Link to="/join" className="btn-primary">Join the Division</Link>
             <Link to="/events" className="btn-ghost">Upcoming Events</Link>

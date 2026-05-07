@@ -17,7 +17,7 @@ export default function CTA() {
           </p>
           <div className="cta-actions">
             <Link to="/join" className="btn-primary">Become a Member</Link>
-            <a href="https://linktr.ee/ursutech" className="btn-ghost" target="_blank" rel="noopener noreferrer">Our Linktree</a>
+            <a href="https://www.instagram.com/ursutech/" className="btn-ghost" target="_blank" rel="noopener noreferrer">Our Instagram</a>
           </div>
         </div>
       </div>

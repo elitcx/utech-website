@@ -1,11 +1,18 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import { DIVISION_PROJECTS } from '../../data/projects';
 
 /* ── MetaverseCanvas ── */
 function MetaverseCanvas({ active }) {
   const canvasRef = useRef(null);
   const mouseRef = useRef({ x: 290, y: 290 });
   const rafRef = useRef(null);
+  const activeRef = useRef(active);
+  const restartRef = useRef(null);
+  useEffect(() => {
+    activeRef.current = active;
+    if (active && restartRef.current) restartRef.current();
+  }, [active]);
   useEffect(() => {
     const canvas = canvasRef.current; if (!canvas) return;
     const ctx = canvas.getContext('2d');
@@ -85,10 +92,12 @@ function MetaverseCanvas({ active }) {
         ctx.beginPath();ctx.moveTo(opv[a][0],opv[a][1]);ctx.lineTo(opv[b][0],opv[b][1]);
         ctx.strokeStyle='rgba(34,201,122,0.5)';ctx.lineWidth=0.8;ctx.stroke();
       });
-      t++; rafRef.current=requestAnimationFrame(draw);
+      t++;
+      if (activeRef.current) { rafRef.current = requestAnimationFrame(draw); } else { rafRef.current = null; }
     };
     const onMouse=e=>{const r=canvas.getBoundingClientRect();mouseRef.current={x:e.clientX-r.left,y:e.clientY-r.top};};
     canvas.addEventListener('mousemove',onMouse);
+    restartRef.current = () => { if (!rafRef.current) draw(); };
     draw();
     return()=>{cancelAnimationFrame(rafRef.current);canvas.removeEventListener('mousemove',onMouse);};
   },[]);
@@ -99,6 +108,12 @@ function MetaverseCanvas({ active }) {
 function RoboticsCanvas({ active }) {
   const canvasRef = useRef(null);
   const rafRef = useRef(null);
+  const activeRef = useRef(active);
+  const restartRef = useRef(null);
+  useEffect(() => {
+    activeRef.current = active;
+    if (active && restartRef.current) restartRef.current();
+  }, [active]);
   useEffect(() => {
     const canvas = canvasRef.current; if (!canvas) return;
     const ctx = canvas.getContext('2d');
@@ -173,8 +188,10 @@ function RoboticsCanvas({ active }) {
       const MX=W*0.72,MY=H*0.08;ctx.fillStyle='rgba(5,15,10,0.85)';ctx.strokeStyle='rgba(34,201,122,0.2)';ctx.lineWidth=0.8;ctx.fillRect(MX,MY,140,76);ctx.strokeRect(MX,MY,140,76);ctx.fillStyle='rgba(34,201,122,0.5)';ctx.font='7px Space Mono,monospace';ctx.fillText('Serial Monitor',MX+6,MY+12);ctx.fillStyle='rgba(34,201,122,0.3)';
       [`> loop() t=${t}`,`> pin13: ${t%60<30?'HIGH':'LOW'}`,`> sensor: ${(Math.sin(t*0.04)*50+50).toFixed(0)}`,`> delay(100)`].forEach((m,i)=>ctx.fillText(m,MX+6,MY+24+i*13));
       if(t%30<15){ctx.fillStyle='#22c97a';ctx.fillRect(MX+6,MY+66,5,8);}
-      t++;rafRef.current=requestAnimationFrame(draw);
+      t++;
+      if (activeRef.current) { rafRef.current = requestAnimationFrame(draw); } else { rafRef.current = null; }
     };
+    restartRef.current = () => { if (!rafRef.current) draw(); };
     draw();
     return()=>cancelAnimationFrame(rafRef.current);
   },[]);
@@ -185,7 +202,13 @@ function RoboticsCanvas({ active }) {
 function PrintingCanvas({ active }) {
   const canvasRef = useRef(null);
   const rafRef = useRef(null);
+  const activeRef = useRef(active);
+  const restartRef = useRef(null);
   const [layer, setLayer] = useState(0);
+  useEffect(() => {
+    activeRef.current = active;
+    if (active && restartRef.current) restartRef.current();
+  }, [active]);
   const TOTAL = 40;
   useEffect(() => {
     const canvas = canvasRef.current; if (!canvas) return;
@@ -251,8 +274,10 @@ function PrintingCanvas({ active }) {
       const pct=curLayer/TOTAL;ctx.fillStyle='rgba(10,6,2,0.8)';ctx.strokeStyle='rgba(245,162,50,0.15)';ctx.lineWidth=0.7;ctx.fillRect(W*0.06,H*0.38,90,42);ctx.strokeRect(W*0.06,H*0.38,90,42);ctx.fillStyle='rgba(245,162,50,0.35)';ctx.font='7px Space Mono,monospace';ctx.fillText('PROGRESS',W*0.06+6,H*0.38+12);ctx.fillStyle='rgba(245,162,50,0.1)';ctx.fillRect(W*0.06+6,H*0.38+17,78,6);ctx.fillStyle=AMBER;ctx.fillRect(W*0.06+6,H*0.38+17,78*pct,6);ctx.fillStyle='rgba(245,162,50,0.6)';ctx.font='bold 10px Space Mono,monospace';ctx.fillText(`${Math.round(pct*100)}%`,W*0.06+6,H*0.38+36);
       headX+=0.016*scanDir;
       if(Math.abs(headX)>1){scanDir*=-1;if(headX>0){curLayer=Math.min(curLayer+1,TOTAL-1);setLayer(curLayer);}}
-      t++;rafRef.current=requestAnimationFrame(draw);
+      t++;
+      if (activeRef.current) { rafRef.current = requestAnimationFrame(draw); } else { rafRef.current = null; }
     };
+    restartRef.current = () => { if (!rafRef.current) draw(); };
     draw();
     return()=>cancelAnimationFrame(rafRef.current);
   },[]);
@@ -271,8 +296,8 @@ const DIV_DATA = [
     tint:'radial-gradient(ellipse 60% 60% at 50% 50%, rgba(85,112,241,0.07) 0%, transparent 70%)',
     title:'Metaverse', titleSub:'& Web Design',
     desc:'Building immersive spatial experiences at the intersection of virtual reality, augmented reality, and real-time 3D.',
-    tags:['Unity','Spatial UI','AR / VR','Shaders','Three.js'],
-    btnClass:'', members:31, projects:12, path:'/metaverse',
+    tags:['Unity','Godot','React','HTML/CSS','Figma','JavaScript'],
+    btnClass:'', members:31, projects:DIVISION_PROJECTS.metaverse.length, path:'/metaverse',
   },
   {
     div:'robotics', num:'02',
@@ -282,7 +307,7 @@ const DIV_DATA = [
     title:'Robotics', titleSub:'& Embedded Systems',
     desc:'Designing autonomous machines — from 3-DOF arms to computer vision pipelines — that interact with the physical world.',
     tags:['ROS2','Arduino','OpenCV','Raspberry Pi','Kinematics','C++'],
-    btnClass:'green-btn', members:24, projects:9, path:'/robotics',
+    btnClass:'green-btn', members:24, projects:DIVISION_PROJECTS.robotics.length, path:'/robotics',
   },
   {
     div:'printing', num:'03',
@@ -290,9 +315,9 @@ const DIV_DATA = [
     color:'#f5a232', badgeBg:'rgba(245,162,50,0.08)', badgeBorder:'rgba(245,162,50,0.25)',
     tint:'radial-gradient(ellipse 60% 60% at 50% 50%, rgba(245,162,50,0.06) 0%, transparent 70%)',
     title:'3D Printing', titleSub:'& Rapid Prototyping',
-    desc:'Turning digital designs into physical objects — FDM, resin, parametric CAD, and iterative hardware prototyping.',
-    tags:['Fusion 360','FDM / SLA','OpenSCAD','Slicing','PLA / PETG','CAD'],
-    btnClass:'amber-btn', members:22, projects:16, path:'/printing',
+    desc:'Turning digital designs into physical objects — high-speed CoreXY FDM, multi-colour AMS, and iterative hardware prototyping.',
+    tags:['Fusion 360','CoreXY / AMS','OpenSCAD','Bambu Studio','PLA / PETG / CF','CAD'],
+    btnClass:'amber-btn', members:22, projects:DIVISION_PROJECTS.printing.length, path:'/printing',
   },
 ];
 
@@ -352,10 +377,13 @@ export default function Hero() {
         {/* Mobile division dots */}
         <div className="hero-mobile-dots">
           {DIV_DATA.map((item, i) => (
-            <div
+            <button
               key={i}
+              type="button"
               className={`hero-mobile-dot${i === activeIdx ? ' active' : ''}`}
               style={{ background: i === activeIdx ? item.color : 'transparent' }}
+              aria-label={`View ${item.title} division`}
+              aria-pressed={i === activeIdx}
               onClick={() => {
                 const wrap = wrapRef.current; if (!wrap) return;
                 const total = wrap.offsetHeight - window.innerHeight;
@@ -368,10 +396,13 @@ export default function Hero() {
         {/* Left division nav */}
         <div className="hero-div-nav">
           {DIV_DATA.map((item, i) => (
-            <div
+            <button
               key={i}
+              type="button"
               className={`hero-div-nav-item ${i !== activeIdx ? 'inactive' : ''}`}
               style={{ color: item.color }}
+              aria-label={`View ${item.title} division`}
+              aria-pressed={i === activeIdx}
               onClick={() => {
                 const wrap = wrapRef.current; if (!wrap) return;
                 const total = wrap.offsetHeight - window.innerHeight;
@@ -384,7 +415,7 @@ export default function Hero() {
                 <div className="hero-div-nav-text">{item.title}</div>
                 <div className="hero-div-nav-num">{item.num}</div>
               </div>
-            </div>
+            </button>
           ))}
         </div>
 

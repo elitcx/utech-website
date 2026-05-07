@@ -61,17 +61,19 @@ export default function Nav() {
             onMouseEnter={() => setDivOpen(true)}
             onMouseLeave={() => setDivOpen(false)}
           >
-            <a
-              href="#"
-              onClick={e => e.preventDefault()}
-              style={{ display: 'flex', alignItems: 'center', gap: 5 }}
-              className={DIV_LINKS.some(d => d.to === pathname) ? 'active' : ''}
+            <button
+              type="button"
+              className={`nav-div-trigger${DIV_LINKS.some(d => d.to === pathname) ? ' active' : ''}`}
+              aria-haspopup="true"
+              aria-expanded={divOpen}
+              onClick={() => setDivOpen(v => !v)}
+              onKeyDown={e => e.key === 'Escape' && setDivOpen(false)}
             >
               Divisions
               <svg width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" strokeWidth="1.5">
                 <polyline points="1 1 5 5 9 1" />
               </svg>
-            </a>
+            </button>
             {divOpen && (
               <div style={{
                 position: 'absolute', top: '100%', left: '50%', transform: 'translateX(-50%)',
@@ -120,7 +122,7 @@ export default function Nav() {
       </nav>
 
       <div className={`mobile-nav-overlay${menuOpen ? ' open' : ''}`}>
-        <button className="mobile-nav-close" onClick={close}>✕</button>
+        <button className="mobile-nav-close" onClick={close} aria-label="Close navigation">✕</button>
         {[...NAV_LINKS, ...DIV_LINKS].map(l => (
           <Link
             key={l.to}

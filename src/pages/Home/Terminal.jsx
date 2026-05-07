@@ -1,11 +1,14 @@
 import { useState, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useReveal } from '../../hooks/useReveal';
+import { SIGNUP_CONFIG } from '../../config/signup';
+import { DIVISION_PROJECTS } from '../../data/projects';
 
 const BOOT_LINES = [
-  { type:'dim', text:'URSU-TECH OS v2.6.1 · April 2026' },
+  { type:'dim', text:'U-TECH OS v2.6.1 · April 2026' },
   { type:'dim', text:'Loading modules: [community] [divisions] [events] ......... OK' },
   { type:'spacer' },
-  { type:'green', text:'Welcome to URSU Technology Terminal.' },
+  { type:'green', text:'Welcome to URSULINE Technology Terminal.' },
   { type:'out', text:'Type `help` for available commands.' },
   { type:'spacer' },
 ];
@@ -28,7 +31,7 @@ const COMMANDS = {
     { type:'spacer' },
     { type:'green', text:'  [01] Metaverse       — XR, spatial computing, game engines' },
     { type:'green', text:'  [02] Robotics         — Embedded systems, autonomous machines' },
-    { type:'amber', text:'  [03] 3D Printing      — Rapid prototyping, CAD, FDM/SLA' },
+    { type:'amber', text:'  [03] 3D Printing      — High-speed CoreXY, AMS, Bambu Studio' },
     { type:'spacer' },
     { type:'dim', text:'All divisions: OPEN TO JOIN' },
     { type:'spacer' },
@@ -47,19 +50,26 @@ const COMMANDS = {
     { type:'green', text:'  62 active  ·  Metaverse: 31  ·  Robotics: 24  ·  3D Printing: 22' },
     { type:'spacer' },
   ],
-  projects: () => [
-    { type:'blue', text:'Active Projects' },
-    { type:'spacer' },
-    { type:'green', text:'  [MV] Campus AR Navigator         — in progress' },
-    { type:'green', text:'  [MV] VR Physics Sandbox          — in progress' },
-    { type:'green', text:'  [RB] 3-DOF Arm Controller        — in progress' },
-    { type:'green', text:'  [RB] CV Object Sorter            — in progress' },
-    { type:'amber', text:'  [3D] Modular Enclosure System    — in progress' },
-    { type:'amber', text:'  [3D] Parametric Keyboard Case    — in progress' },
-    { type:'spacer' },
-    { type:'dim', text:'6 active projects across 3 divisions' },
-    { type:'spacer' },
-  ],
+  projects: () => {
+    const PREFIX = { metaverse:'MV', robotics:'RB', printing:'3D' };
+    const COLOR  = { metaverse:'blue', robotics:'green', printing:'amber' };
+    const lines = [
+      { type:'blue', text:'Active Projects' },
+      { type:'spacer' },
+    ];
+    let count = 0;
+    for (const [div, projects] of Object.entries(DIVISION_PROJECTS)) {
+      for (const p of projects.filter(p => p.status === 'Active')) {
+        const tag = `[${PREFIX[div]}]`;
+        lines.push({ type: COLOR[div], text: `  ${tag} ${p.name.padEnd(26)}— active` });
+        count++;
+      }
+    }
+    lines.push({ type:'spacer' });
+    lines.push({ type:'dim', text:`${count} active projects across 3 divisions` });
+    lines.push({ type:'spacer' });
+    return lines;
+  },
   whoami: () => [
     { type:'blue', text:'URSU Technology' },
     { type:'spacer' },
@@ -67,7 +77,7 @@ const COMMANDS = {
     { type:'out', text:'  Founded: 2023  ·  Open to all Regina Pacis students' },
     { type:'out', text:'  Focus: Build · Design · Explore · Connect · Compete · Ship' },
     { type:'spacer' },
-    { type:'green', text:'  discord.gg/ursutech  ·  instagram: @ursutech' },
+    { type:'green', text:'  instagram.com/ursutech  ·  @ursutech' },
     { type:'spacer' },
   ],
 };
@@ -79,10 +89,21 @@ function getJoinOutput(arg) {
     { type:'err', text:`Division "${arg}" not found. Try: metaverse, robotics, printing` },
     { type:'spacer' },
   ];
+  if (SIGNUP_CONFIG.isOpen) {
+    return [
+      { type:'green', text:`Registration for ${name} is open!` },
+      { type:'dim',   text:'Redirecting to join page ........... OK' },
+      { type:'spacer' },
+      { type:'__redirect', to: '/join' },
+    ];
+  }
+  const dateMsg = SIGNUP_CONFIG.showNextIntakeDate && SIGNUP_CONFIG.nextIntakeDate
+    ? `Next intake opens: ${SIGNUP_CONFIG.nextIntakeDate}.`
+    : 'Check our Instagram @ursutech for updates.';
   return [
-    { type:'green', text:`Joining ${name} division...` },
-    { type:'dim',   text:'Sending request ................... OK' },
-    { type:'green', text:`Welcome to ${name}! Check your Discord DMs for next steps.` },
+    { type:'amber', text:`Registration for ${name} is currently closed.` },
+    { type:'out',   text:`${dateMsg}` },
+    { type:'dim',   text:'Follow us on Instagram @ursutech to get notified when sign-ups open.' },
     { type:'spacer' },
   ];
 }
@@ -103,6 +124,7 @@ export default function Terminal() {
   const inputRef = useRef(null);
   const ref = useReveal();
   const ref2 = useReveal();
+  const navigate = useNavigate();
 
   const scrollBody = () => {
     if (bodyRef.current) bodyRef.current.scrollTop = bodyRef.current.scrollHeight;
@@ -137,7 +159,10 @@ export default function Terminal() {
         { type:'spacer' },
       ];
     }
-    setLines([...newLines, ...output]);
+    const redirectLine = output.find(l => l.type === '__redirect');
+    const visibleOutput = output.filter(l => l.type !== '__redirect');
+    setLines([...newLines, ...visibleOutput]);
+    if (redirectLine) setTimeout(() => navigate(redirectLine.to), 900);
     setHistory(h => [trimmed, ...h]);
     setHistIdx(-1);
     setInput('');
@@ -185,17 +210,17 @@ export default function Terminal() {
       <div className="terminal-inner">
         <div className="terminal-left reveal" ref={ref}>
           <div className="terminal-left-label">INTERACTIVE TERMINAL</div>
-          <h2 className="terminal-left-title">Explore URSU Tech<br/>via <em>command line</em></h2>
+          <h2 className="terminal-left-title">Explore U-TECH<br/>via <em>command line</em></h2>
           <p className="terminal-left-body">
             Query the community, browse divisions, check upcoming events, and even request to join — all from the terminal.
           </p>
           <div className="terminal-commands">
             {HINTS.map(h => (
-              <div key={h.cmd} className="terminal-cmd-hint" onClick={() => injectCmd(h.cmd)}>
+              <button type="button" key={h.cmd} className="terminal-cmd-hint" onClick={() => injectCmd(h.cmd)}>
                 <span className="terminal-cmd-hint-prompt">$</span>
                 <span className="terminal-cmd-hint-cmd">{h.cmd}</span>
                 <span className="terminal-cmd-hint-desc">{h.desc}</span>
-              </div>
+              </button>
             ))}
           </div>
         </div>
@@ -211,8 +236,10 @@ export default function Terminal() {
             {lines.map(renderLine)}
           </div>
           <div className="t-input-row">
+            <label htmlFor="terminal-cmd-input" className="sr-only">Terminal command input</label>
             <span className="t-input-prompt">ursu@tech:~$</span>
             <input
+              id="terminal-cmd-input"
               ref={inputRef}
               className="t-input"
               value={input}

@@ -4,6 +4,7 @@ import { useReveal } from '../../hooks/useReveal';
 import Nav from '../../components/Nav';
 import Marquee from '../../components/Marquee';
 import Footer from '../../components/Footer';
+import { DIVISION_PROJECTS, STATUS_COLORS } from '../../data/projects';
 import '../../styles/divisions.css';
 
 function ArduinoCanvas() {
@@ -72,14 +73,7 @@ function LiveSensors() {
   );
 }
 
-const PROJECTS = [
-  {name:'3-DOF Arm Controller',desc:'Custom inverse kinematics solver for our fabricated 3-degree-of-freedom robotic arm, with real-time trajectory planning.',tags:['C++','Arduino','IK','Servo'],status:'Active',sc:'#22c97a'},
-  {name:'Autonomous Line Follower',desc:'A PID-controlled robot that navigates complex tracks using IR sensors and adaptive speed control.',tags:['Arduino','PID','IR Sensors','Motors'],status:'Shipped',sc:'rgba(255,255,255,0.3)'},
-  {name:'CV Object Sorter',desc:'OpenCV pipeline that classifies objects on a conveyor belt by color and shape, triggering pneumatic sorter gates.',tags:['Python','OpenCV','ROS2','Actuators'],status:'Active',sc:'#22c97a'},
-  {name:'Autonomous Rover',desc:'Raspberry Pi rover with obstacle avoidance, GPS waypoint navigation, and a live video feed dashboard.',tags:['Raspberry Pi','ROS2','GPS','OpenCV'],status:'In Progress',sc:'#5570f1'},
-  {name:'Balance Bot',desc:'Self-balancing two-wheeled robot using complementary filter for IMU fusion and LQR control.',tags:['Arduino','IMU','LQR','C++'],status:'In Progress',sc:'#5570f1'},
-  {name:'Gripper Force Sensor',desc:'Custom 3D-printed gripper with strain gauge feedback for delicate object manipulation.',tags:['3D Print','Arduino','Strain Gauge','I2C'],status:'Shipped',sc:'rgba(255,255,255,0.3)'},
-];
+const PROJECTS = DIVISION_PROJECTS.robotics;
 
 const TECH = [
   {name:'Arduino',desc:'Microcontroller platform'},{name:'ROS2',desc:'Robot Operating System'},{name:'Raspberry Pi',desc:'SBC for compute tasks'},{name:'OpenCV',desc:'Computer vision'},
@@ -87,9 +81,9 @@ const TECH = [
 ];
 
 const LEARN = [
-  {title:'Weekly Build Nights',sub:'Wednesdays · ED 209',icon:<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22c97a" strokeWidth="1.5"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>},
+  {title:'Monthly Build Nights',sub:'Monthly · ED 209',icon:<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22c97a" strokeWidth="1.5"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>},
   {title:'Intro to ROS2 Workshop',sub:'Monthly · All welcome',icon:<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22c97a" strokeWidth="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>},
-  {title:'Electronics Study Group',sub:'Bi-weekly · Discord',icon:<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22c97a" strokeWidth="1.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>},
+  {title:'Electronics Study Group',sub:'Monthly · Instagram',icon:<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22c97a" strokeWidth="1.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>},
   {title:'Competition Prep Sessions',sub:'Seasonal · Open to all',icon:<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22c97a" strokeWidth="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>},
 ];
 
@@ -134,7 +128,7 @@ export default function Robotics() {
                   <div className="project-card-name">{p.name}</div>
                   <p className="project-card-desc">{p.desc}</p>
                   <div className="project-card-tags">{p.tags.map(t=><span key={t} className="project-card-tag">{t}</span>)}</div>
-                  <div className="project-status" style={{color:p.sc,background:p.sc+'18',border:`1px solid ${p.sc}33`}}>{p.status}</div>
+                  <div className="project-status" style={{color:STATUS_COLORS[p.status],background:STATUS_COLORS[p.status]+'18',border:`1px solid ${STATUS_COLORS[p.status]}33`}}>{p.status}</div>
                 </div>
               ))}
             </div>
@@ -176,7 +170,7 @@ export default function Robotics() {
               <div>
                 <div className="section-label green">GET INVOLVED</div>
                 <h2 style={{fontFamily:'var(--display)',fontSize:'clamp(24px,2.5vw,36px)',fontWeight:700,letterSpacing:'-0.02em',marginBottom:16}}>How to participate</h2>
-                <p style={{fontSize:14,fontWeight:300,color:'var(--white-dim)',lineHeight:1.8,marginBottom:28}}>Robotics meets weekly for build nights where we work on active projects. Monthly workshops cover ROS2, embedded C++, and computer vision from first principles.</p>
+                <p style={{fontSize:14,fontWeight:300,color:'var(--white-dim)',lineHeight:1.8,marginBottom:28}}>Robotics meets monthly for build nights where we work on active projects. Monthly workshops cover ROS2, embedded C++, and computer vision from first principles.</p>
                 <Link to="/join" className="btn-primary green-btn">Join Robotics Division</Link>
               </div>
               <div className="learn-grid">

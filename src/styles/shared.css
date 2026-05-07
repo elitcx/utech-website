@@ -5,7 +5,7 @@
 /* ── Buttons ── */
 .btn-primary {
   font-family: var(--sans); font-size: 14px; font-weight: 500;
-  color: #fff; background: var(--blue);
+  color: var(--white); background: var(--blue);
   padding: 13px 28px; border-radius: 4px;
   text-decoration: none; letter-spacing: 0.05em;
   transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
@@ -43,12 +43,19 @@ nav.scrolled { height: 56px; border-bottom-color: var(--border-blue); }
 .nav-logo-text { font-family: var(--display); font-size: 14px; font-weight: 600; letter-spacing: 0.12em; color: var(--white); }
 .nav-logo-text span { color: var(--blue); }
 .nav-links { display: flex; align-items: center; gap: 36px; list-style: none; }
-.nav-links a { font-family: var(--sans); font-size: 13px; font-weight: 400; color: var(--white-dim); text-decoration: none; letter-spacing: 0.04em; transition: color 0.2s; position: relative; }
-.nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; right: 0; height: 1px; background: var(--blue); transform: scaleX(0); transition: transform 0.2s; transform-origin: left; }
-.nav-links a:hover { color: var(--white); }
-.nav-links a:hover::after { transform: scaleX(1); }
-.nav-links a.active { color: var(--white); }
-.nav-links a.active::after { transform: scaleX(1); }
+.nav-links a,
+.nav-div-trigger { font-family: var(--sans); font-size: 13px; font-weight: 400; color: var(--white-dim); text-decoration: none; letter-spacing: 0.04em; transition: color 0.2s; position: relative; }
+.nav-links a::after,
+.nav-div-trigger::after { content: ''; position: absolute; bottom: -4px; left: 0; right: 0; height: 1px; background: var(--blue); transform: scaleX(0); transition: transform 0.2s; transform-origin: left; }
+.nav-links a:hover,
+.nav-div-trigger:hover { color: var(--white); }
+.nav-links a:hover::after,
+.nav-div-trigger:hover::after { transform: scaleX(1); }
+.nav-links a.active,
+.nav-div-trigger.active { color: var(--white); }
+.nav-links a.active::after,
+.nav-div-trigger.active::after { transform: scaleX(1); }
+.nav-div-trigger { background: none; border: none; cursor: pointer; padding: 0; display: flex; align-items: center; gap: 5px; }
 .nav-cta { font-family: var(--sans); font-size: 13px; font-weight: 500; color: var(--bg) !important; background: var(--blue); padding: 8px 20px; border-radius: 4px; text-decoration: none; letter-spacing: 0.04em; transition: background 0.2s, transform 0.2s !important; }
 .nav-cta::after { display: none !important; }
 .nav-cta:hover { background: #6b83f3 !important; transform: translateY(-1px); }
@@ -137,6 +144,9 @@ footer { border-top: 1px solid var(--border); padding: 40px 48px; display: flex;
 .marquee-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--blue); flex-shrink: 0; }
 .marquee-dot.green { background: var(--green-bright); }
 .marquee-dot.amber { background: var(--amber); }
+
+/* ── Focus styles ── */
+:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; border-radius: 3px; }
 
 /* ── Responsive ── */
 @media (max-width: 1024px) {
