@@ -8,20 +8,20 @@ import { SIGNUP_CONFIG } from '../config/signup';
 import '../styles/join.css';
 
 const FAQS = [
-{ q: 'Is membership free?', a: 'Yes — URSU Technology membership is completely free for all SMA Regina Pacis Surakarta students. There are no fees, no requirements, and no commitments beyond showing up and contributing. You only need to contribute to monthly class funds.' },
+{ q: 'Is membership free?', a: 'Yes, URSU Technology membership is completely free for all SMA Regina Pacis Surakarta students. There are no fees, no requirements, and no commitments beyond showing up and contributing. You only need to contribute to monthly class funds.' },
 { q: 'Do I need technical experience to join?', a: 'Not at all. Many of our members joined with zero prior experience. We run beginner workshops and pair newer members with experienced mentors on projects. Curiosity is the only requirement.' },
-{ q: 'Can I join multiple divisions?', a: 'Yes. You are welcome to participate in all three divisions simultaneously. Many members do cross-division project work — for example, the 3D Printing division regularly supports Robotics builds.' },
+{ q: 'Can I join multiple divisions?', a: 'Yes. You are welcome to participate in all three divisions simultaneously. Many members do cross-division project work; for example, the 3D Printing division regularly supports Robotics builds.' },
 { q: 'How active do I need to be?', a: 'There is no attendance requirement. You can drop in when your schedule allows. Most members come to at least one event per month, but you will get the most out of community if you engage with all our events.' },
-{ q: 'Are events open to non-members?', a: 'Most workshops and networking events are open to all Regina Pacis students — not just registered members. Some events like hackathons may require prior registration. Check each event listing for details.' },
+{ q: 'Are events open to non-members?', a: 'Most workshops and networking events are open to all Regina Pacis students, not just registered members. Some events like hackathons may require prior registration. Check each event listing for details.' },
 { q: 'How do I access the 3D printers?', a: 'Printer access is granted to members after attending one introductory print night session with a division lead. We require a brief orientation to ensure safe operation and good print hygiene.' },
-{ q: 'Is URSU Technology affiliated with Ursuline?', a: "Yes — we operate under the SMA Regina Pacis Surakarta's Student Union as a recognized student group, which provides us with funding, meeting spaces, and event support." }];
+{ q: 'Is URSU Technology affiliated with Ursuline?', a: "Yes, we operate under the SMA Regina Pacis Surakarta's Student Union as a recognized student group, which provides us with funding, meeting spaces, and event support." }];
 
 const PERKS = [
-{ icon: '🧰', title: 'Real Projects', desc: 'Work on live, shipped projects — not just toy examples.' },
+{ icon: '🧰', title: 'Real Projects', desc: 'Work on live, shipped projects, not just toy examples.' },
 { icon: '🏆', title: 'Competitions', desc: 'Hackathons, CTFs, and design challenges with real prizes.' },
 { icon: '🤝', title: 'Industry Network', desc: 'Connect with professionals at our networking events.' },
 { icon: '🎓', title: 'Workshops', desc: '13+ workshops per year on in-demand technical skills.' },
-{ icon: '🖨️', title: 'Print Lab Access', desc: 'Supervised access to the Bambu Lab X1 Carbon — high-speed CoreXY with 16-colour AMS.' },
+{ icon: '🖨️', title: 'Print Lab Access', desc: 'Supervised access to the Bambu Lab X1 Carbon, a high-speed CoreXY with 16-colour AMS.' },
 { icon: '📸', title: 'Instagram Community', desc: 'Follow us @ursutech for updates, highlights, and announcements.' },
 { icon: '🚀', title: 'Mentorship', desc: 'Pair with experienced members on challenging projects.' },
 { icon: '📄', title: 'Portfolio Projects', desc: 'Build real things you can put on your resume.' }];
@@ -41,7 +41,7 @@ function SignupPanel() {
           Sign-ups are open
         </div>
         <div className="signup-title">Ready to join?</div>
-        <p className="signup-body">Fill out our Google Form — it takes under 2 minutes. Tell us your program and which division interests you most.</p>
+        <p className="signup-body">Fill out our Google Form. It takes under 2 minutes. Tell us your program and which division interests you most.</p>
         <div>
           <a href={SIGNUP_CONFIG.googleFormUrl} target="_blank" rel="noopener noreferrer" className="signup-cta-btn">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><polyline points="14 2 14 8 20 8" /></svg>
@@ -60,7 +60,7 @@ function SignupPanel() {
         Sign-ups currently closed
       </div>
       <div className="signup-title">Applications aren't open yet</div>
-      <p className="signup-body">We run periodic intake cycles throughout the year. Follow our Instagram to get notified the moment sign-ups open — and start connecting with the community now.</p>
+      <p className="signup-body">We run periodic intake cycles throughout the year. Follow our Instagram to get notified the moment sign-ups open, and start connecting with the community now.</p>
       {SIGNUP_CONFIG.showNextIntakeDate && SIGNUP_CONFIG.nextIntakeDate && (
         <div style={{ marginBottom: 28 }}>
           <div className="signup-next-date">
@@ -87,8 +87,8 @@ export default function Join() {
   const r1 = useReveal(), r2 = useReveal(), r3 = useReveal(), r4 = useReveal();
 
   const heroSub = SIGNUP_CONFIG.isOpen
-    ? 'Free membership. No experience needed. Three technical divisions, 62 members, and 13+ events per year. Sign-ups are open now — scroll down to apply.'
-    : 'Free membership. No experience needed. Three technical divisions, 62 members, and 13+ events per year. Sign-ups open periodically — scroll down to stay in the loop.';
+    ? 'Free membership. No experience needed. Three technical divisions, 62 members, and 13+ events per year. Sign-ups are open now. Scroll down to apply.'
+    : 'Free membership. No experience needed. Three technical divisions, 62 members, and 13+ events per year. Sign-ups open periodically. Scroll down to stay in the loop.';
 
   return (
     <>

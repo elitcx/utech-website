@@ -47,7 +47,7 @@ export default function Events() {
         <div className="events-hero-inner" style={{opacity:0,animation:'fadeUp 0.8s 0.2s ease forwards'}}>
           <div className="section-label">EVENTS</div>
           <h1 className="events-hero-title">Everything happening<br/>at <em>URSU Technology</em></h1>
-          <p className="events-hero-sub">Hackathons, workshops, build nights, networking, and social events — open to all students.</p>
+          <p className="events-hero-sub">Hackathons, workshops, build nights, networking, and social events. Open to all students.</p>
           <div style={{display:'flex',gap:16,marginTop:32,flexWrap:'wrap'}}>
             {[[String(upcoming.length),'Upcoming Events'],[String(thisMonthCount),'This Month'],['120+','Avg. Attendance']].map(([n,l])=>(
               <div key={l} style={{paddingRight:16,borderRight:'1px solid var(--border)'}}>
@@ -122,7 +122,7 @@ export default function Events() {
         <div className="events-cta">
           <div>
             <div className="section-label">STAY IN THE LOOP</div>
-            <h2 style={{fontFamily:'var(--display)',fontSize:'clamp(24px,3vw,40px)',fontWeight:700,letterSpacing:'-0.02em'}}>Never miss an event — <span style={{color:'var(--blue)'}}>tune in on Instagram</span></h2>
+            <h2 style={{fontFamily:'var(--display)',fontSize:'clamp(24px,3vw,40px)',fontWeight:700,letterSpacing:'-0.02em'}}>Never miss an event. <span style={{color:'var(--blue)'}}>Tune in on Instagram</span></h2>
           </div>
           <div style={{display:'flex',gap:12,flexShrink:0,flexWrap:'wrap'}}>
             <Link to="/join" className="btn-primary">Join URSU Technology</Link>

@@ -11,10 +11,11 @@ const DIVISIONS = [
     color: '#5570f1',
     glowColor: 'rgba(85,112,241,0.12)',
     iconBg: 'rgba(85,112,241,0.1)',
-    desc: 'Building immersive XR experiences — from VR worlds and spatial UI to WebGL shaders and game engines.',
+    desc: 'Building immersive XR experiences: VR worlds, spatial UI, WebGL shaders, and game engines.',
     tags: ['Unity', 'WebXR', 'Spatial UI', 'AR/VR', 'Shaders', 'Three.js'],
     members: 31, projects: DIVISION_PROJECTS.metaverse.length,
     projects_list: DIVISION_PROJECTS.metaverse.slice(0, 3),
+    leader: 'Aloysius Sandy H.O.', viceLead: 'Darrel Kurniawan',
     icon: (color) => (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.5">
         <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/>
@@ -29,10 +30,11 @@ const DIVISIONS = [
     color: '#22c97a',
     glowColor: 'rgba(34,201,122,0.1)',
     iconBg: 'rgba(34,201,122,0.08)',
-    desc: 'Designing and programming autonomous machines — robotic arms, rovers, embedded systems, and computer vision.',
+    desc: 'Designing and programming autonomous machines: robotic arms, rovers, embedded systems, and computer vision.',
     tags: ['ROS2', 'Arduino', 'OpenCV', 'Raspberry Pi', 'Kinematics', 'C++'],
     members: 24, projects: DIVISION_PROJECTS.robotics.length,
     projects_list: DIVISION_PROJECTS.robotics.slice(0, 3),
+    leader: 'Benediktus Hastu T.', viceLead: 'Kenneth Jehezkiel M.W.',
     icon: (color) => (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.5">
         <rect x="3" y="11" width="4" height="8" rx="1"/>
@@ -49,10 +51,11 @@ const DIVISIONS = [
     color: '#f5a232',
     glowColor: 'rgba(245,162,50,0.1)',
     iconBg: 'rgba(245,162,50,0.08)',
-    desc: 'Rapid prototyping from CAD to physical object — high-speed CoreXY FDM, multi-colour AMS, parametric design, and hardware iteration.',
+    desc: 'Rapid prototyping from CAD to physical object: high-speed CoreXY FDM, multi-colour AMS, parametric design, and hardware iteration.',
     tags: ['Fusion 360', 'CoreXY/AMS', 'OpenSCAD', 'Bambu Studio', 'PLA/PETG/CF', 'CAD'],
     members: 22, projects: DIVISION_PROJECTS.printing.length,
     projects_list: DIVISION_PROJECTS.printing.slice(0, 3),
+    leader: 'Carlos Keiran I.', viceLead: 'Michael Satrio B.',
     icon: (color) => (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.5">
         <polyline points="12 2 2 7 12 12 22 7 12 2"/>
@@ -77,7 +80,7 @@ export default function DivisionsShowcase() {
               <div className="section-label">OUR DIVISIONS</div>
               <h2 className="divisions-title">Three communities,<br/>one <em>ecosystem</em></h2>
             </div>
-            <p className="divisions-sub">Each division runs its own projects, workshops, and events — and frequently collaborates across boundaries.</p>
+            <p className="divisions-sub">Each division runs its own projects, workshops, and events, and frequently collaborates across boundaries.</p>
           </div>
 
           <div className="divisions-grid">
@@ -112,8 +115,19 @@ export default function DivisionsShowcase() {
                     ))}
                   </div>
 
-                  <div className="div-detail" style={{ maxHeight: isActive ? '320px' : '0' }}>
+                  <div className="div-detail" style={{ maxHeight: isActive ? '440px' : '0' }}>
                     <div className="div-detail-inner">
+                      <div className="div-detail-title">Leadership</div>
+                      <div style={{ display:'flex', gap:10, marginBottom:20 }}>
+                        <div style={{ flex:1, padding:'10px 14px', background:'rgba(255,255,255,0.03)', border:'1px solid rgba(255,255,255,0.05)', borderRadius:4 }}>
+                          <div style={{ fontFamily:'var(--mono)', fontSize:9, letterSpacing:'0.1em', color:'rgba(255,255,255,0.3)', textTransform:'uppercase', marginBottom:5 }}>Lead</div>
+                          <div style={{ fontSize:13, fontWeight:500 }}>{d.leader}</div>
+                        </div>
+                        <div style={{ flex:1, padding:'10px 14px', background:'rgba(255,255,255,0.03)', border:'1px solid rgba(255,255,255,0.05)', borderRadius:4 }}>
+                          <div style={{ fontFamily:'var(--mono)', fontSize:9, letterSpacing:'0.1em', color:'rgba(255,255,255,0.3)', textTransform:'uppercase', marginBottom:5 }}>Vice Lead</div>
+                          <div style={{ fontSize:13, fontWeight:500 }}>{d.viceLead}</div>
+                        </div>
+                      </div>
                       <div className="div-detail-title">Active Projects</div>
                       <div className="div-projects">
                         {d.projects_list.map(p => (

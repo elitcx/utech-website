@@ -89,7 +89,7 @@ export default function Printing() {
         <div className="div-hero-content" style={{opacity:0,animation:'fadeUp 0.8s 0.2s ease forwards'}}>
           <div className="div-hero-badge"><div className="div-hero-badge-dot"/>3D Printing Division · 03</div>
           <h1 className="div-hero-title">3D Printing<br/><span style={{color:'var(--white)',fontSize:'0.65em',fontWeight:600}}>& Rapid Prototyping</span></h1>
-          <p className="div-hero-sub">Turning digital designs into physical objects — high-speed CoreXY FDM, multi-colour AMS printing, parametric CAD, and iterative hardware prototyping for every division and project.</p>
+          <p className="div-hero-sub">Turning digital designs into physical objects: high-speed CoreXY FDM, multi-colour AMS printing, parametric CAD, and iterative hardware prototyping for every division and project.</p>
           <div style={{display:'flex',flexWrap:'wrap',gap:8,marginBottom:32}}>
             {['Fusion 360','CoreXY / AMS','OpenSCAD','Bambu Studio','PLA / PETG / CF','CAD'].map(t=><span key={t} className="tag-chip amber">{t}</span>)}
           </div>
@@ -101,6 +101,16 @@ export default function Printing() {
             {[['22','Members'],['16','Projects'],['4','Events / Sem']].map(([n,l])=>(
               <div key={l}><div className="div-stat-num">{n}</div><div className="div-stat-label">{l}</div></div>
             ))}
+          </div>
+          <div style={{display:'flex',gap:40,marginTop:28,paddingTop:28,borderTop:'1px solid rgba(255,255,255,0.06)'}}>
+            <div>
+              <div className="div-stat-label">Division Lead</div>
+              <div style={{fontFamily:'var(--display)',fontSize:16,fontWeight:600,marginTop:4}}>Carlos Keiran I.</div>
+            </div>
+            <div>
+              <div className="div-stat-label">Vice Lead</div>
+              <div style={{fontFamily:'var(--display)',fontSize:16,fontWeight:600,marginTop:4}}>Michael Satrio B.</div>
+            </div>
           </div>
         </div>
         <div className="div-hero-canvas"><PrinterCanvas/></div>
@@ -135,7 +145,7 @@ export default function Printing() {
               <div>
                 <div className="section-label amber">PRINT SPECS</div>
                 <h2 style={{fontFamily:'var(--display)',fontSize:'clamp(24px,2.5vw,36px)',fontWeight:700,letterSpacing:'-0.02em',marginBottom:16}}>Our lab setup</h2>
-                <p style={{fontSize:14,fontWeight:300,color:'var(--white-dim)',lineHeight:1.8,marginBottom:28}}>The 3D Printing division operates a Bambu Lab X1 Carbon COMBO with AMS — a high-speed CoreXY printer with Lidar-assisted error detection and 16-colour multi-material support. Members get supervised access during open print nights and can run prints for any division project.</p>
+                <p style={{fontSize:14,fontWeight:300,color:'var(--white-dim)',lineHeight:1.8,marginBottom:28}}>The 3D Printing division operates a Bambu Lab X1 Carbon COMBO with AMS, a high-speed CoreXY printer with Lidar-assisted error detection and 16-colour multi-material support. Members get supervised access during open print nights and can run prints for any division project.</p>
               </div>
               <div className="print-widget">
                 <div className="print-widget-title">Lab Equipment</div>
@@ -170,7 +180,7 @@ export default function Printing() {
               <div>
                 <div className="section-label amber">GET INVOLVED</div>
                 <h2 style={{fontFamily:'var(--display)',fontSize:'clamp(24px,2.5vw,36px)',fontWeight:700,letterSpacing:'-0.02em',marginBottom:16}}>How to participate</h2>
-                <p style={{fontSize:14,fontWeight:300,color:'var(--white-dim)',lineHeight:1.8,marginBottom:28}}>Monthly open print nights — bring a model or learn CAD from scratch. Monthly workshops cover everything from Fusion 360 basics to advanced slicer techniques and material science.</p>
+                <p style={{fontSize:14,fontWeight:300,color:'var(--white-dim)',lineHeight:1.8,marginBottom:28}}>Monthly open print nights: bring a model or learn CAD from scratch. Monthly workshops cover everything from Fusion 360 basics to advanced slicer techniques and material science.</p>
                 <Link to="/join" className="btn-primary amber-btn">Join 3D Printing Division</Link>
               </div>
               <div className="learn-grid">

@@ -97,7 +97,7 @@ export default function Robotics() {
         <div className="div-hero-content" style={{opacity:0,animation:'fadeUp 0.8s 0.2s ease forwards'}}>
           <div className="div-hero-badge"><div className="div-hero-badge-dot"/>Robotics Division · 02</div>
           <h1 className="div-hero-title">Robotics<br/><span style={{color:'var(--white)',fontSize:'0.65em',fontWeight:600}}>& Embedded Systems</span></h1>
-          <p className="div-hero-sub">Designing and programming autonomous machines — from 3-DOF arms to computer vision pipelines — that interact with and respond to the physical world.</p>
+          <p className="div-hero-sub">Designing and programming autonomous machines, from 3-DOF arms to computer vision pipelines, that interact with and respond to the physical world.</p>
           <div style={{display:'flex',flexWrap:'wrap',gap:8,marginBottom:32}}>
             {['ROS2','Arduino','OpenCV','Raspberry Pi','Kinematics','C++'].map(t=><span key={t} className="tag-chip green">{t}</span>)}
           </div>
@@ -109,6 +109,16 @@ export default function Robotics() {
             {[['24','Members'],['9','Projects'],['5','Events / Sem']].map(([n,l])=>(
               <div key={l}><div className="div-stat-num">{n}</div><div className="div-stat-label">{l}</div></div>
             ))}
+          </div>
+          <div style={{display:'flex',gap:40,marginTop:28,paddingTop:28,borderTop:'1px solid rgba(255,255,255,0.06)'}}>
+            <div>
+              <div className="div-stat-label">Division Lead</div>
+              <div style={{fontFamily:'var(--display)',fontSize:16,fontWeight:600,marginTop:4}}>Benediktus Hastu T.</div>
+            </div>
+            <div>
+              <div className="div-stat-label">Vice Lead</div>
+              <div style={{fontFamily:'var(--display)',fontSize:16,fontWeight:600,marginTop:4}}>Kenneth Jehezkiel M.W.</div>
+            </div>
           </div>
         </div>
         <div className="div-hero-canvas"><ArduinoCanvas/></div>
@@ -143,7 +153,7 @@ export default function Robotics() {
               <div>
                 <div className="section-label green">LIVE DEMO</div>
                 <h2 style={{fontFamily:'var(--display)',fontSize:'clamp(24px,2.5vw,36px)',fontWeight:700,letterSpacing:'-0.02em',marginBottom:16}}>Real sensor data</h2>
-                <p style={{fontSize:14,fontWeight:300,color:'var(--white-dim)',lineHeight:1.8,marginBottom:28}}>Our division works with real hardware — from servo torque sensors to ultrasonic proximity detectors. Here's a simulated live readout from a typical robotics session.</p>
+                <p style={{fontSize:14,fontWeight:300,color:'var(--white-dim)',lineHeight:1.8,marginBottom:28}}>Our division works with real hardware: from servo torque sensors to ultrasonic proximity detectors. Here's a simulated live readout from a typical robotics session.</p>
               </div>
               <LiveSensors/>
             </div>

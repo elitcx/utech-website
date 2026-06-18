@@ -75,8 +75,8 @@ export default function Metaverse() {
       <section className="div-hero" style={{borderBottom:'1px solid var(--border)'}}>
         <div className="div-hero-bg"/><div className="div-hero-grid"/>
         <div className="div-hero-content" style={{opacity:0,animation:'fadeUp 0.8s 0.2s ease forwards'}}>
-          <div className="div-hero-badge"><div className="div-hero-badge-dot"/>Game Design & Web Design Division · 01</div>
-          <h1 className="div-hero-title">Game Design<br/><span style={{color:'var(--white)',fontSize:'0.65em',fontWeight:600}}>& Web Design</span></h1>
+          <div className="div-hero-badge"><div className="div-hero-badge-dot"/>Metaverse & Web Design Division · 01</div>
+          <h1 className="div-hero-title">Metaverse<br/><span style={{color:'var(--white)',fontSize:'0.65em',fontWeight:600}}>& Web Design</span></h1>
           <p className="div-hero-sub">Building interactive games and polished web experiences at the intersection of game mechanics, creative coding, and modern web development.</p>
           <div className="div-hero-tags">
             {['Unity','Godot','React','HTML/CSS','Figma','JavaScript'].map(t=><span key={t} className="tag-chip">{t}</span>)}
@@ -89,6 +89,16 @@ export default function Metaverse() {
             {[['31','Members'],['6','Projects'],['4','Events / Sem']].map(([n,l])=>(
               <div key={l}><div className="div-stat-num">{n}</div><div className="div-stat-label">{l}</div></div>
             ))}
+          </div>
+          <div style={{display:'flex',gap:40,marginTop:28,paddingTop:28,borderTop:'1px solid rgba(255,255,255,0.06)'}}>
+            <div>
+              <div className="div-stat-label">Division Lead</div>
+              <div style={{fontFamily:'var(--display)',fontSize:16,fontWeight:600,marginTop:4}}>Aloysius Sandy H.O.</div>
+            </div>
+            <div>
+              <div className="div-stat-label">Vice Lead</div>
+              <div style={{fontFamily:'var(--display)',fontSize:16,fontWeight:600,marginTop:4}}>Darrel Kurniawan</div>
+            </div>
           </div>
         </div>
         <div className="div-hero-canvas"><HeroCanvas/></div>
@@ -143,7 +153,7 @@ export default function Metaverse() {
               <div>
                 <div className="section-label">GET INVOLVED</div>
                 <h2 style={{fontFamily:'var(--display)',fontSize:'clamp(24px,2.5vw,36px)',fontWeight:700,letterSpacing:'-0.02em',marginBottom:16}}>How to participate</h2>
-                <p style={{fontSize:14,fontWeight:300,color:'var(--white-dim)',lineHeight:1.8,marginBottom:28}}>The Game Design & Web Design division holds monthly build nights and runs a monthly game design workshop open to all members. No experience required — just curiosity and willingness to learn.</p>
+                <p style={{fontSize:14,fontWeight:300,color:'var(--white-dim)',lineHeight:1.8,marginBottom:28}}>The Game Design & Web Design division holds monthly build nights and runs a monthly game design workshop open to all members. No experience required. Just curiosity and willingness to learn.</p>
                 <Link to="/join" className="btn-primary">Join Game Design & Web Design</Link>
               </div>
               <div className="learn-grid">

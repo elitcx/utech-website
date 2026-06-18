@@ -61,7 +61,7 @@ const pillars = [
   {
     num: '05',
     title: 'Compete & Hack',
-    body: 'Hackathons, CTF competitions, and case challenges — where ideas become prototypes under pressure.',
+    body: 'Hackathons, CTF competitions, and case challenges where ideas become prototypes under pressure.',
     color: '#5570f1',
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -94,7 +94,7 @@ export default function Pillars() {
           </div>
           <div style={{display:'flex',justifyContent:'space-between',alignItems:'flex-end',marginBottom:'56px',flexWrap:'wrap',gap:'20px'}}>
             <h2 className="pillars-title">Six pillars of<br/><em>community</em></h2>
-            <p className="pillars-sub">Everything we do falls within one of these areas — and most projects span several.</p>
+            <p className="pillars-sub">Everything we do falls within one of these areas, and most projects span several.</p>
           </div>
           <div className="pillars-grid">
             {pillars.map((p) => (

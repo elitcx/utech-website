@@ -11,7 +11,7 @@ export default function HomeAbout() {
               <div className="section-label">WHO WE ARE</div>
               <h2 className="about-title">A community for <em>every</em> kind of builder</h2>
               <p className="about-body">
-                URSU Technology is the tech community at our university — open to anyone curious about how technology is built, used, and changed. Whether you write code, design interfaces, analyze data, or just want to explore, you belong here.
+                URSU Technology is the tech community at our university, open to anyone curious about how technology is built, used, and changed. Whether you write code, design interfaces, analyze data, or just want to explore, you belong here.
               </p>
               <p className="about-body" style={{marginTop: '-8px'}}>
                 We run workshops, hackathons, talks, and collaborative projects that connect students to real skills and each other.
