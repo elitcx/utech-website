@@ -31,24 +31,24 @@ const TEAM = [
 
 // Set img: '/path/to/screenshot.jpg' to show a project image; leave null for the graphic placeholder
 const PORTFOLIO = [
-  { name:'Campus AR Navigator',      div:'Metaverse',   desc:'Augmented reality wayfinding app for University of Regina campus buildings.',       status:'Active',      statusColor:'#22c97a',             bg:'rgba(85,112,241,0.08)', divColor:'#5570f1', img:null },
-  { name:'3-DOF Arm Controller',     div:'Robotics',    desc:'Custom inverse kinematics controller for our fabricated robotic arm build.',        status:'Active',      statusColor:'#22c97a',             bg:'rgba(34,201,122,0.06)', divColor:'#22c97a', img:null },
-  { name:'Modular Enclosure System', div:'3D Printing', desc:'Parametric Fusion 360 enclosure library for custom electronics projects.',          status:'Active',      statusColor:'#22c97a',             bg:'rgba(245,162,50,0.06)', divColor:'#f5a232', img:null },
-  { name:'VR Physics Sandbox',       div:'Metaverse',   desc:'Interactive Unity environment for visualizing physics simulations in VR.',          status:'In Progress', statusColor:'#5570f1',             bg:'rgba(85,112,241,0.08)', divColor:'#5570f1', img:null },
-  { name:'CV Object Sorter',         div:'Robotics',    desc:'OpenCV pipeline that classifies and routes objects on a conveyor belt.',            status:'Active',      statusColor:'#22c97a',             bg:'rgba(34,201,122,0.06)', divColor:'#22c97a', img:null },
-  { name:'Parametric Keyboard Case', div:'3D Printing', desc:'OpenSCAD library for generating custom mechanical keyboard cases from parameters.', status:'Shipped',     statusColor:'rgba(255,255,255,0.3)',bg:'rgba(245,162,50,0.06)', divColor:'#f5a232', img:null },
+  { name:'Line Follower Robot',      div:'Robotics',   desc:'A Line follower robot meant for line following competitions',       status:'Active',      statusColor:'#22c97a',             bg:'rgba(85,112,241,0.08)', divColor:'#22c97a', img:"public/uploads/linefollower.webp" },
+  { name:'Portfolio Website',     div:'Metaverse',    desc:'Custom portfolio website made using ReactJS, HTML, CSS, tailwindcss, etc.',        status:'In Progress',      statusColor:'#5570f1',             bg:'rgba(34,201,122,0.06)', divColor:'#5570f1', img:"public/uploads/portfolio.webp" },
+  { name:'Hollow Knight & Silksong Figure', div:'3D Printing', desc:'custom Hollow Knight & Silksong fan art figure features Hornet and the Knight sculpted together on a detailed, rocky base. Characters: Hornet is shown in her red cloak wielding a needle, while the Knight is posed alongside her.',          status:'Active',      statusColor:'#22c97a',             bg:'rgba(245,162,50,0.06)', divColor:'#f5a232', img:"public/uploads/3dprint.webp" },
+  { name:'OLLO - TIG',       div:'Robotics',   desc:'TIG, a leading educational robot from South Korea, revolutionizes interactive learning with its sophisticated and innovative humanoid design. Equipped with eight motors that enable natural movement and interaction, TIG delivers an immersive and engaging learning experience.',          status:'Active', statusColor:'#22c97a',             bg:'rgba(85,112,241,0.08)', divColor:'#22c97a', img:"public/uploads/tig.webp" },
+  { name:'Leanbot',         div:'Robotics',    desc:'Leanbot, the latest innovation from Vietnam, is a robot that combines advanced technology with a compact, efficient design. Powered by motion sensors, a precision gripper, dynamic RGB LEDs, high-quality audio, and various smart sensors, Leanbot delivers an unparalleled interactive experience',            status:'Active',      statusColor:'#22c97a',             bg:'rgba(34,201,122,0.06)', divColor:'#22c97a', img:"public/uploads/leanbot.webp" },
+  { name:'Biztech Figma Design', div:'Metaverse', desc:'Mobile app Figma design for a biztech competition.', status:'Shipped',     statusColor:'rgba(255,255,255,0.3)',bg:'rgba(245,162,50,0.06)', divColor:'#5570f1', img:"public/uploads/figma.webp" },
 ];
 
 // Set img: '/path/to/photo.jpg' to show a real photo; leave null for the patterned placeholder
 const GALLERY = [
-  { label:'Spring Hackathon 2025', wide:true, bg:'rgba(85,112,241,0.08)', hint:'Hackathon · 80+ attendees', img:null },
-  { label:'3D Printing Workshop',            bg:'rgba(245,162,50,0.08)', hint:'Workshop · March 2025',     img:null },
-  { label:'Robotics Build Night',  tall:true, bg:'rgba(34,201,122,0.08)', hint:'Build Night · Feb 2025',   img:null },
-  { label:'Industry Night',                  bg:'rgba(85,112,241,0.08)', hint:'Networking · Oct 2024',    img:null },
-  { label:'AR Demo Day',           wide:true, bg:'rgba(85,112,241,0.08)', hint:'Demo · April 2025',        img:null },
-  { label:'End-of-Year Social',              bg:'rgba(34,201,122,0.08)', hint:'Social · April 2025',      img:null },
-  { label:'Workshop Series Vol. 2',wide:true, bg:'rgba(245,162,50,0.08)', hint:'Workshop · 2025',          img:null },
-  { label:'Robotics Open House',             bg:'rgba(34,201,122,0.08)', hint:'Open House · 2025',        img:null },
+  { label:'Petra Christian University IRGL 2025', wide:true, bg:'rgba(85,112,241,0.08)', hint:'Hackathon · 80+ attendees', img:"public/uploads/irgl.webp" },
+  { label:'Solo Literacy Festival',            bg:'rgba(245,162,50,0.08)', hint:'Workshop · March 2025',     img:"public/uploads/slf.webp" },
+  { label:'Ursulin Cup UTECH Showcase',  tall:true, bg:'rgba(34,201,122,0.08)', hint:'Build Night · Feb 2025',   img:"public/uploads/ucup.webp" },
+  { label:'Biztech 2024 BINUS University',                  bg:'rgba(85,112,241,0.08)', hint:'Networking · Oct 2024',    img:"public/uploads/win2.webp" },
+  { label:'3D Printing Workshop',           wide:true, bg:'rgba(85,112,241,0.08)', hint:'Demo · April 2025',        img:"public/uploads/3dprintworkshop.webp" },
+  { label:'Battle of Technology Universitas Sebelas Maret',              bg:'rgba(34,201,122,0.08)', hint:'Social · April 2025',      img:"public/uploads/bot.jpg" },
+  { label:'UTECH 2026 Orientation',wide:true, bg:'rgba(245,162,50,0.08)', hint:'Workshop · 2025',          img:"public/uploads/orient.webp" },
+  { label:'Web Development Workshop by KodeKiddo',             bg:'rgba(34,201,122,0.08)', hint:'Open House · 2025',        img:"public/uploads/webshop.webp" },
 ];
 
 const VALUES = [
