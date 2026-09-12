@@ -55,4 +55,25 @@ U-Tech reflects a commitment to **integrating technology into education** and th
 
 ---
 
+## 🛠️ For Maintainers / Untuk Pengurus
+
+Full technical documentation lives in [`docs/`](docs/):
+
+- **English** — [docs/HANDBOOK.en.md](docs/HANDBOOK.en.md)
+- **Bahasa Indonesia** — [docs/HANDBOOK.id.md](docs/HANDBOOK.id.md)
+
+It covers the project structure, how every component works, a cookbook of common
+maintenance tasks (adding events, opening sign-ups, updating the team), and
+deployment.
+
+Dokumentasi teknis lengkap ada di [`docs/`](docs/), dalam bahasa Inggris dan
+Indonesia. Mencakup struktur proyek, cara kerja setiap komponen, buku resep tugas
+perawatan umum, dan deployment.
+
+```bash
+npm install && npm run dev
+```
+
+---
+
 *© Ursuline Technology (U-Tech) — SMA-SMP Regina Pacis*
