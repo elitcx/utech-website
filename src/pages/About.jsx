@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { useRef, useEffect, useMemo } from 'react';
+import { useRef, useEffect, useMemo, useState, useCallback } from 'react';
 import { useReveal } from '../hooks/useReveal';
 import Nav from '../components/Nav';
 import Marquee from '../components/Marquee';
@@ -63,11 +63,36 @@ const GALLERY_PATTERNS = [
   `repeating-linear-gradient(-45deg, rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 1px, transparent 1px, transparent 10px)`,
 ];
 
-function GalleryItem({ item, patternIdx }) {
+function Lightbox({ src, alt, onClose }) {
+  useEffect(() => {
+    const onKey = (e) => { if (e.key === 'Escape') onClose(); };
+    document.addEventListener('keydown', onKey);
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.removeEventListener('keydown', onKey);
+      document.body.style.overflow = '';
+    };
+  }, [onClose]);
+
+  return (
+    <div className="lightbox-backdrop" onClick={onClose}>
+      <button className="lightbox-close" onClick={onClose} aria-label="Close">✕</button>
+      <img
+        className="lightbox-img"
+        src={src}
+        alt={alt}
+        onClick={(e) => e.stopPropagation()}
+      />
+    </div>
+  );
+}
+
+function GalleryItem({ item, patternIdx, onOpen }) {
   return (
     <div
-      className={`gallery-item${item.wide ? ' wide' : ''}${item.tall ? ' tall' : ''}`}
+      className={`gallery-item${item.wide ? ' wide' : ''}${item.tall ? ' tall' : ''}${item.img ? ' expandable' : ''}`}
       style={{ background: item.bg, backgroundImage: item.img ? 'none' : GALLERY_PATTERNS[patternIdx % 3] }}
+      onClick={() => item.img && onOpen(item.img, item.label)}
     >
       {item.img ? (
         <img src={item.img} alt={item.label} style={{ position:'absolute', inset:0, width:'100%', height:'100%', objectFit:'cover' }} />
@@ -79,16 +104,21 @@ function GalleryItem({ item, patternIdx }) {
       )}
       <div className="gallery-label">
         <span className="gallery-label-text">{item.label}</span>
+        {item.img && <span className="gallery-expand-icon">⤢</span>}
       </div>
     </div>
   );
 }
 
 
-function PortfolioCard({ p }) {
+function PortfolioCard({ p, onOpen }) {
   return (
     <div className="portfolio-card">
-      <div className="portfolio-thumb" style={{ background: p.bg }}>
+      <div
+        className={`portfolio-thumb${p.img ? ' expandable' : ''}`}
+        style={{ background: p.bg }}
+        onClick={() => p.img && onOpen(p.img, p.name)}
+      >
         {p.img ? (
           <img src={p.img} alt={p.name} style={{ position:'absolute', inset:0, width:'100%', height:'100%', objectFit:'cover' }} />
         ) : (
@@ -351,9 +381,13 @@ export default function About() {
   const revPortfolio = useReveal();
   const revGallery = useReveal();
   const revValues = useReveal();
+  const [lightbox, setLightbox] = useState(null);
+  const openLightbox = useCallback((src, alt) => setLightbox({ src, alt }), []);
+  const closeLightbox = useCallback(() => setLightbox(null), []);
 
   return (
     <>
+      {lightbox && <Lightbox src={lightbox.src} alt={lightbox.alt} onClose={closeLightbox} />}
       <Nav />
 
       {/* Hero */}
@@ -453,7 +487,7 @@ export default function About() {
               <Link to="/join" style={{fontFamily:'var(--mono)',fontSize:12,letterSpacing:'0.12em',color:'var(--blue)',textDecoration:'none'}}>CONTRIBUTE A PROJECT →</Link>
             </div>
             <div className="portfolio-grid">
-              {PORTFOLIO.map(p => <PortfolioCard key={p.name} p={p} />)}
+              {PORTFOLIO.map(p => <PortfolioCard key={p.name} p={p} onOpen={openLightbox} />)}
             </div>
           </div>
         </div>
@@ -466,7 +500,7 @@ export default function About() {
             <div className="section-label">GALLERY</div>
             <h2 style={{fontFamily:'var(--display)',fontSize:'clamp(28px,3vw,44px)',fontWeight:700,letterSpacing:'-0.02em',marginBottom:48}}>Community in action</h2>
             <div className="gallery-grid">
-              {GALLERY.map((item, i) => <GalleryItem key={i} item={item} patternIdx={i} />)}
+              {GALLERY.map((item, i) => <GalleryItem key={i} item={item} patternIdx={i} onOpen={openLightbox} />)}
             </div>
           </div>
         </div>
