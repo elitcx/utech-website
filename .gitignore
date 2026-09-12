@@ -3,3 +3,7 @@ dist/
 .env
 .DS_Store
 .claude/
+
+# Generated PDF copies of the docs. The Markdown in docs/ is the source of
+# truth; rebuild these with docs/pdf/build-pdf.mjs when you need them.
+docs/pdf/*.pdf

@@ -7,7 +7,7 @@ It is written for the next generation of *pengurus* — you may have never touch
 React before. Every section explains **what** something is, **why** it was built
 that way, and **how** to change it.
 
-Read section 1 and 2 first. After that, section 10 ("Cookbook") is the part you
+Read section 1 and 2 first. After that, section 11 ("Cookbook") is the part you
 will open every week.
 
 ---

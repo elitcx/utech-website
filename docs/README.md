@@ -31,6 +31,34 @@ deployment, daftar jujur masalah yang diketahui, dan ide pengembangan.
 
 ---
 
+## PDF versions / Versi PDF
+
+Print-ready A4 copies live in [`pdf/`](pdf/), for reading offline or handing over
+on paper. Salinan A4 siap cetak ada di [`pdf/`](pdf/).
+
+**One file with everything:** `U-TECH-Documentation-Complete.pdf` (205 pages)
+collects all four documents into a single volume with a master contents page.
+This is the one to hand over. / **Satu berkas berisi semuanya:** itulah yang
+sebaiknya diserahkan.
+
+The same material is also split into separate PDFs. / Materi yang sama juga
+tersedia terpisah.
+
+| PDF | Pages | Contents |
+|---|---|---|
+| `U-TECH-Documentation-Complete.pdf` | 205 | Everything below, in one volume |
+| `U-TECH-Handbook-EN.pdf` | 52 | Maintainer handbook, English |
+| `U-TECH-Handbook-ID.pdf` | 54 | Buku panduan pengurus, Bahasa Indonesia |
+| `U-TECH-Functions-EN.pdf` | 46 | Function & component reference, English |
+| `U-TECH-Functions-ID.pdf` | 48 | Rujukan fungsi & komponen, Bahasa Indonesia |
+| `U-TECH-Docs-Index.pdf` | 3 | This index |
+
+The Markdown files are the source of truth. Regenerate the PDFs after editing
+them. / File Markdown adalah sumber kebenarannya. Buat ulang PDF-nya setelah
+mengedit.
+
+---
+
 ## Quick reference / Rujukan cepat
 
 The three files that hold editable content.
