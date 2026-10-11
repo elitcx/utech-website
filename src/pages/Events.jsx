@@ -5,6 +5,7 @@ import Nav from '../components/Nav';
 import Footer from '../components/Footer';
 import '../styles/events.css';
 import { TYPE_COLORS, ALL_EVENTS, isUpcoming } from '../data/events';
+import { STATS } from '../data/stats';
 
 const MONTH_INDEX = { JAN:0,FEB:1,MAR:2,APR:3,MAY:4,JUN:5,JUL:6,AUG:7,SEP:8,OCT:9,NOV:10,DEC:11 };
 
@@ -49,7 +50,7 @@ export default function Events() {
           <h1 className="events-hero-title">Everything happening<br/>at <em>URSU Technology</em></h1>
           <p className="events-hero-sub">Hackathons, workshops, build nights, networking, and social events. Open to all students.</p>
           <div style={{display:'flex',gap:16,marginTop:32,flexWrap:'wrap'}}>
-            {[[String(upcoming.length),'Upcoming Events'],[String(thisMonthCount),'This Month'],['120+','Avg. Attendance']].map(([n,l])=>(
+            {[[String(upcoming.length),'Upcoming Events'],[String(thisMonthCount),'This Month'],[STATS.avgAttendance,'Avg. Attendance']].map(([n,l])=>(
               <div key={l} style={{paddingRight:16,borderRight:'1px solid var(--border)'}}>
                 <div style={{fontFamily:'var(--display)',fontSize:24,fontWeight:700,color:'var(--blue)',letterSpacing:'-0.02em'}}>{n}</div>
                 <div style={{fontFamily:'var(--mono)',fontSize:10,letterSpacing:'0.12em',color:'rgba(255,255,255,0.3)',marginTop:2,textTransform:'uppercase'}}>{l}</div>

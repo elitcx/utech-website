@@ -1,10 +1,12 @@
+import { leadersOf } from '../../data/team';
 import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { useReveal } from '../../hooks/useReveal';
 import Nav from '../../components/Nav';
 import Marquee from '../../components/Marquee';
 import Footer from '../../components/Footer';
-import { DIVISION_PROJECTS, STATUS_COLORS } from '../../data/projects';
+import { DIVISION_PROJECTS, statusStyle } from '../../data/projects';
+import { divInfo } from '../../data/stats';
 import '../../styles/divisions.css';
 
 function ArduinoCanvas() {
@@ -74,6 +76,7 @@ function LiveSensors() {
 }
 
 const PROJECTS = DIVISION_PROJECTS.robotics;
+const INFO = divInfo('robotics');
 
 const TECH = [
   {name:'Arduino',desc:'Microcontroller platform'},{name:'ROS2',desc:'Robot Operating System'},{name:'Raspberry Pi',desc:'SBC for compute tasks'},{name:'OpenCV',desc:'Computer vision'},
@@ -99,25 +102,25 @@ export default function Robotics() {
           <h1 className="div-hero-title">Robotics<br/><span style={{color:'var(--white)',fontSize:'0.65em',fontWeight:600}}>& Embedded Systems</span></h1>
           <p className="div-hero-sub">Designing and programming autonomous machines, from 3-DOF arms to computer vision pipelines, that interact with and respond to the physical world.</p>
           <div style={{display:'flex',flexWrap:'wrap',gap:8,marginBottom:32}}>
-            {['ROS2','Arduino','OpenCV','Raspberry Pi','Kinematics','C++'].map(t=><span key={t} className="tag-chip green">{t}</span>)}
+            {INFO.tags.map(t=><span key={t} className="tag-chip green">{t}</span>)}
           </div>
           <div style={{display:'flex',gap:12}}>
             <Link to="/join" className="btn-primary green-btn">Join Division</Link>
             <a href="#projects" className="btn-ghost">See Projects</a>
           </div>
           <div className="div-stat-row">
-            {[['24','Members'],['9','Projects'],['5','Events / Sem']].map(([n,l])=>(
+            {[[String(INFO.members),'Members'],[String(INFO.projects),'Projects'],[String(INFO.eventsPerSem),'Events / Sem']].map(([n,l])=>(
               <div key={l}><div className="div-stat-num">{n}</div><div className="div-stat-label">{l}</div></div>
             ))}
           </div>
           <div style={{display:'flex',gap:40,marginTop:28,paddingTop:28,borderTop:'1px solid rgba(255,255,255,0.06)'}}>
             <div>
               <div className="div-stat-label">Division Lead</div>
-              <div style={{fontFamily:'var(--display)',fontSize:16,fontWeight:600,marginTop:4}}>Benediktus Hastu T.</div>
+              <div style={{fontFamily:'var(--display)',fontSize:16,fontWeight:600,marginTop:4}}>{leadersOf('Robotics').lead}</div>
             </div>
             <div>
               <div className="div-stat-label">Vice Lead</div>
-              <div style={{fontFamily:'var(--display)',fontSize:16,fontWeight:600,marginTop:4}}>Kenneth Jehezkiel M.W.</div>
+              <div style={{fontFamily:'var(--display)',fontSize:16,fontWeight:600,marginTop:4}}>{leadersOf('Robotics').vice}</div>
             </div>
           </div>
         </div>
@@ -137,8 +140,8 @@ export default function Robotics() {
                   <div style={{fontFamily:'var(--mono)',fontSize:9,letterSpacing:'0.12em',textTransform:'uppercase',color:'var(--accent)',marginBottom:12}}>Robotics</div>
                   <div className="project-card-name">{p.name}</div>
                   <p className="project-card-desc">{p.desc}</p>
-                  <div className="project-card-tags">{p.tags.map(t=><span key={t} className="project-card-tag">{t}</span>)}</div>
-                  <div className="project-status" style={{color:STATUS_COLORS[p.status],background:STATUS_COLORS[p.status]+'18',border:`1px solid ${STATUS_COLORS[p.status]}33`}}>{p.status}</div>
+                  <div className="project-card-tags">{(p.tags||[]).map(t=><span key={t} className="project-card-tag">{t}</span>)}</div>
+                  <div className="project-status" style={statusStyle(p.status)}>{p.status}</div>
                 </div>
               ))}
             </div>

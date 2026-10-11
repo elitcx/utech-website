@@ -4,52 +4,22 @@ import { useReveal } from '../hooks/useReveal';
 import Nav from '../components/Nav';
 import Marquee from '../components/Marquee';
 import Footer from '../components/Footer';
+import { DIV_COLORS, teamOf } from '../data/team';
+import { ALL_PROJECTS, ACTIVE_PROJECTS, DIV_LABEL, DIV_ACCENT, statusStyle } from '../data/projects';
+import { STATS, fill } from '../data/stats';
+import site from '../data/site.json';
+
+const TIMELINE = site.timeline;
+const ACTIVE_COUNT = ACTIVE_PROJECTS.length;
+const COLOR_CYCLE = ['rgba(85,112,241,0.08)', 'rgba(34,201,122,0.06)', 'rgba(245,162,50,0.06)'];
+const PORTFOLIO = ALL_PROJECTS.filter(p => p.showcase).map((p, i) => ({
+  ...p, div: DIV_LABEL[p.division], divColor: DIV_ACCENT[p.division], bg: COLOR_CYCLE[i % 3],
+}));
+const GALLERY_BGS = ['rgba(85,112,241,0.08)', 'rgba(245,162,50,0.08)', 'rgba(34,201,122,0.08)'];
+const GALLERY = site.gallery.map((g, i) => ({
+  ...g, wide: g.size === 'wide', tall: g.size === 'tall', bg: GALLERY_BGS[i % 3],
+}));
 import '../styles/about.css';
-
-const TIMELINE = [
-  { date:'October 14, 2023', title:'URSU Technology is Founded', body:'Following the Integrated Learning 1 (IL 1) exhibition held on October 14, 2023, URSU Technology was established as a space for students of SMA-SMP Regina Pacis to explore and develop their potential in modern technology.', color:'#5570f1' },
-  { date:'November 2023', title:'Robopark UKDW', body:'Competed at Robopark UKDW shortly after founding, our first major inter-university competition as an organization.', color:'#22c97a' },
-  { date:'February 2024', title:'Biztech 2024 at Binus University', body:'Placed at Biztech 2024 held at Binus University @Semarang (Feb 22–23), marking our first recognized inter-university competition result.', color:'#f5a232' },
-  { date:'October 2024', title:'First Workshop Series', body:'We hosted our first three-part workshop series on web development, drawing over 60 attendees. It was our proof of concept: the demand for hands-on learning was real.', color:'#5570f1' },
-  { date:'January 2025', title:'Three Divisions Launched', body:'We structured the community into three technical divisions: Metaverse, Robotics, and 3D Printing, each with dedicated leads and project tracks.', color:'#22c97a' },
-  { date:'2026–Present', title:'Expanding Horizons', body:'Now with 62 members, 6 ongoing projects, and competition wins at UNS, UKDW, UNESA, PCU, and Ubaya, URSU Technology continues to grow as one of the most active student tech communities at SMA Regina Pacis.', color:'#f5a232' },
-];
-
-// Set img: '/path/to/photo.jpg' to show a photo; leave null for the initials placeholder
-const TEAM = [
-  { name:'Emmanuel Frederic S.',   role:'President',        div:'Community',  color:'#5570f1', initials:'EFC', img:null },
-  { name:'Clarisa Sanches T.D.A.',   role:'Vice President',     div:'Community',   color:'#5570f1', initials:'CSTDA', img:null },
-  { name:'Maria Tan H.S.A.T.', role:'Secretary',        div:'Community',  color:'#5570f1', initials:'MTHSAT', img:null },
-  { name:'Raphael Adrian K.',    role:'Secretary',   div:'Community',  color:'#5570f1', initials:'RAK', img:null },
-  { name:'Aloysius Sandy H.O.',  role:'Metaverse Lead',    div:'Metaverse',   color:'#5570f1', initials:'ASHO', img:null },
-  { name:'Darrel Kurniawan',  role:'Metaverse Vice Lead', div:'Metaverse',color:'#5570f1', initials:'DK', img:null },
-  { name:'Benediktus Hastu T.',   role:'Robotics Lead',   div:'Robotics',  color:'#22c97a', initials:'BHT', img:null },
-  { name:'Kenneth Jehezkiel M.W.',  role:'Robotics Vice Lead',  div:'Robotics',  color:'#22c97a', initials:'KJMW', img:null },
-  { name:'Carlos Keiran I.',  role:'3D Printing Lead',  div:'3D Printing',  color:'#f5a232', initials:'CKI', img:null },
-  { name:'Michael Satrio B.',  role:'3D Printing Vice Lead',  div:'3D Printing',  color:'#f5a232', initials:'MSB', img:null },
-];
-
-// Set img: '/path/to/screenshot.jpg' to show a project image; leave null for the graphic placeholder
-const PORTFOLIO = [
-  { name:'Line Follower Robot',      div:'Robotics',   desc:'A Line follower robot meant for line following competitions',       status:'Active',      statusColor:'#22c97a',             bg:'rgba(85,112,241,0.08)', divColor:'#22c97a', img:"/uploads/linefollower.webp" },
-  { name:'Portfolio Website',     div:'Metaverse',    desc:'Custom portfolio website made using ReactJS, HTML, CSS, tailwindcss, etc.',        status:'In Progress',      statusColor:'#5570f1',             bg:'rgba(34,201,122,0.06)', divColor:'#5570f1', img:"/uploads/portfolio.webp" },
-  { name:'Hollow Knight & Silksong Figure', div:'3D Printing', desc:'custom Hollow Knight & Silksong fan art figure features Hornet and the Knight sculpted together on a detailed, rocky base. Characters: Hornet is shown in her red cloak wielding a needle, while the Knight is posed alongside her.',          status:'Active',      statusColor:'#22c97a',             bg:'rgba(245,162,50,0.06)', divColor:'#f5a232', img:"/uploads/3dprint.webp" },
-  { name:'OLLO - TIG',       div:'Robotics',   desc:'TIG, a leading educational robot from South Korea, revolutionizes interactive learning with its sophisticated and innovative humanoid design. Equipped with eight motors that enable natural movement and interaction, TIG delivers an immersive and engaging learning experience.',          status:'Active', statusColor:'#22c97a',             bg:'rgba(85,112,241,0.08)', divColor:'#22c97a', img:"/uploads/tig.webp" },
-  { name:'Leanbot',         div:'Robotics',    desc:'Leanbot, the latest innovation from Vietnam, is a robot that combines advanced technology with a compact, efficient design. Powered by motion sensors, a precision gripper, dynamic RGB LEDs, high-quality audio, and various smart sensors, Leanbot delivers an unparalleled interactive experience',            status:'Active',      statusColor:'#22c97a',             bg:'rgba(34,201,122,0.06)', divColor:'#22c97a', img:"/uploads/leanbot.webp" },
-  { name:'Biztech Figma Design', div:'Metaverse', desc:'Mobile app Figma design for a biztech competition.', status:'Shipped',     statusColor:'rgba(255,255,255,0.3)',bg:'rgba(245,162,50,0.06)', divColor:'#5570f1', img:"/uploads/figma.webp" },
-];
-
-// Set img: '/path/to/photo.jpg' to show a real photo; leave null for the patterned placeholder
-const GALLERY = [
-  { label:'Petra Christian University IRGL 2025', wide:true, bg:'rgba(85,112,241,0.08)', hint:'Hackathon · 80+ attendees', img:"/uploads/irgl.webp" },
-  { label:'Solo Literacy Festival',            bg:'rgba(245,162,50,0.08)', hint:'Workshop · March 2025',     img:"/uploads/slf.webp" },
-  { label:'Ursulin Cup UTECH Showcase',  tall:true, bg:'rgba(34,201,122,0.08)', hint:'Build Night · Feb 2025',   img:"/uploads/ucup.webp" },
-  { label:'Biztech 2024 BINUS University',                  bg:'rgba(85,112,241,0.08)', hint:'Networking · Oct 2024',    img:"/uploads/win2.webp" },
-  { label:'3D Printing Workshop',           wide:true, bg:'rgba(85,112,241,0.08)', hint:'Demo · April 2025',        img:"/uploads/3dprintworkshop.webp" },
-  { label:'Battle of Technology Universitas Sebelas Maret',              bg:'rgba(34,201,122,0.08)', hint:'Social · April 2025',      img:"/uploads/bot.jpg" },
-  { label:'UTECH 2026 Orientation',wide:true, bg:'rgba(245,162,50,0.08)', hint:'Workshop · 2025',          img:"/uploads/orient.webp" },
-  { label:'Web Development Workshop by KodeKiddo',             bg:'rgba(34,201,122,0.08)', hint:'Open House · 2025',        img:"/uploads/webshop.webp" },
-];
 
 const VALUES = [
   { icon: <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#5570f1" strokeWidth="1.5"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>, title:'Build First', body:'We believe in learning by doing. Every workshop, session, and meeting centres around making something real.' },
@@ -132,18 +102,19 @@ function PortfolioCard({ p, onOpen }) {
         <div className="portfolio-div" style={{ color:p.divColor }}>{p.div}</div>
         <div className="portfolio-name">{p.name}</div>
         <p className="portfolio-desc">{p.desc}</p>
-        <span className="portfolio-status" style={{ color:p.statusColor, background:p.statusColor+'18', border:`1px solid ${p.statusColor}33` }}>{p.status}</span>
+        <span className="portfolio-status" style={statusStyle(p.status)}>{p.status}</span>
       </div>
     </div>
   );
 }
 
 // ── Leadership Tunnel ─────────────────────────────────────────────
+const withColor = div => teamOf(div).map(m => ({ ...m, color: DIV_COLORS[div] }));
 const TUNNEL_SECTIONS = [
-  { title:'COMMUNITY', color:'#5570f1', members: TEAM.slice(0,4) },
-  { title:'METAVERSE',  color:'#5570f1', members: TEAM.slice(4,6) },
-  { title:'ROBOTICS',   color:'#22c97a', members: TEAM.slice(6,8) },
-  { title:'3D PRINT',   color:'#f5a232', members: TEAM.slice(8,10) },
+  { title:'COMMUNITY', color:DIV_COLORS.Community,     members: withColor('Community') },
+  { title:'METAVERSE', color:DIV_COLORS.Metaverse,     members: withColor('Metaverse') },
+  { title:'ROBOTICS',  color:DIV_COLORS.Robotics,      members: withColor('Robotics') },
+  { title:'3D PRINT',  color:DIV_COLORS['3D Printing'], members: withColor('3D Printing') },
 ];
 
 function LeadershipTunnel() {
@@ -398,7 +369,7 @@ export default function About() {
           <div style={{opacity:0,animation:'fadeUp 0.8s 0.2s ease forwards'}}>
             <div className="about-hero-eyebrow">URSU TECHNOLOGY · EST. 2023</div>
             <h1 className="about-hero-title">We exist to make <em>builders</em> out of every student.</h1>
-            <p className="about-hero-sub">URSU Technology is the SMA Regina Pacis Surakarta's student-led tech community. We run workshops, trainings, and industry events, with three technical divisions and 62 active members.</p>
+            <p className="about-hero-sub">URSU Technology is the SMA Regina Pacis Surakarta's student-led tech community. We run workshops, trainings, and industry events, with three technical divisions and {STATS.members} active members.</p>
             <div style={{display:'flex',gap:12,flexWrap:'wrap'}}>
               <Link to="/join" className="btn-primary">Join the Community</Link>
               <a href="#history" className="btn-ghost">Our Story</a>
@@ -406,7 +377,7 @@ export default function About() {
           </div>
           <div className="about-hero-right" style={{opacity:0,animation:'fadeUp 0.8s 0.4s ease forwards'}}>
             <div className="about-stat-grid">
-              {[['62','Members','blue'],['3','Divisions','green'],['13+','Events / Year','amber'],['6','Active Projects','blue'],['3+','Years Running','green'],['5+','Competition Wins','amber']].map(([n,l,c])=>(
+              {[[STATS.members,'Members','blue'],['3','Divisions','green'],[STATS.eventsPerYear,'Events / Year','amber'],[String(ACTIVE_COUNT),'Active Projects','blue'],[STATS.yearsRunning,'Years Running','green'],[STATS.competitionWins,'Competition Wins','amber']].map(([n,l,c])=>(
                 <div className="about-stat" key={l}>
                   <div className={`about-stat-num${c==='green'?' green':c==='amber'?' amber':''}`}>{n}</div>
                   <div className="about-stat-label">{l}</div>
@@ -460,7 +431,7 @@ export default function About() {
                     <div className="timeline-content">
                       <div className="timeline-date">{item.date}</div>
                       <div className="timeline-title">{item.title}</div>
-                      <p className="timeline-body">{item.body}</p>
+                      <p className="timeline-body">{fill(item.body)}</p>
                     </div>
                   </div>
                 ))}

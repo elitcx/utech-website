@@ -77,3 +77,16 @@ npm install && npm run dev
 ---
 
 *© Ursuline Technology (U-Tech) — SMA-SMP Regina Pacis*
+
+## Admin dashboard
+
+Type `admin` in the home-page terminal and enter the manager password. The dashboard edits
+`src/data/site.json` (sign-ups, numbers, projects, events, team, timeline, gallery) and commits it to
+GitHub; Vercel then redeploys. Every page reads from that one file, so a change shows up everywhere.
+
+Set these in Vercel → Settings → Environment Variables (see `.env.example`). Never commit real values:
+
+- `ADMIN_PASSWORD` – the manager password
+- `GITHUB_TOKEN` – fine-grained token for this repo only, *Contents: Read and write*
+
+For local dev, `.env` (git-ignored) with `ADMIN_LOCAL_FS=1` makes the dashboard edit the local files instead.

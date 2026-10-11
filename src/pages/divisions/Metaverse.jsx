@@ -1,10 +1,12 @@
+import { leadersOf } from '../../data/team';
 import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { useReveal } from '../../hooks/useReveal';
 import Nav from '../../components/Nav';
 import Marquee from '../../components/Marquee';
 import Footer from '../../components/Footer';
-import { DIVISION_PROJECTS, STATUS_COLORS } from '../../data/projects';
+import { DIVISION_PROJECTS, statusStyle } from '../../data/projects';
+import { divInfo } from '../../data/stats';
 import '../../styles/divisions.css';
 
 function HeroCanvas() {
@@ -47,6 +49,7 @@ function HeroCanvas() {
 }
 
 const PROJECTS = DIVISION_PROJECTS.metaverse;
+const INFO = divInfo('metaverse');
 
 const TECH = [
   {name:'Unity',desc:'Game engine for 2D/3D builds'},
@@ -79,25 +82,25 @@ export default function Metaverse() {
           <h1 className="div-hero-title">Metaverse<br/><span style={{color:'var(--white)',fontSize:'0.65em',fontWeight:600}}>& Web Design</span></h1>
           <p className="div-hero-sub">Building interactive games and polished web experiences at the intersection of game mechanics, creative coding, and modern web development.</p>
           <div className="div-hero-tags">
-            {['Unity','Godot','React','HTML/CSS','Figma','JavaScript'].map(t=><span key={t} className="tag-chip">{t}</span>)}
+            {INFO.tags.map(t=><span key={t} className="tag-chip">{t}</span>)}
           </div>
           <div style={{display:'flex',gap:12}}>
             <Link to="/join" className="btn-primary">Join Division</Link>
             <a href="#projects" className="btn-ghost">See Projects</a>
           </div>
           <div className="div-stat-row">
-            {[['31','Members'],['6','Projects'],['4','Events / Sem']].map(([n,l])=>(
+            {[[String(INFO.members),'Members'],[String(INFO.projects),'Projects'],[String(INFO.eventsPerSem),'Events / Sem']].map(([n,l])=>(
               <div key={l}><div className="div-stat-num">{n}</div><div className="div-stat-label">{l}</div></div>
             ))}
           </div>
           <div style={{display:'flex',gap:40,marginTop:28,paddingTop:28,borderTop:'1px solid rgba(255,255,255,0.06)'}}>
             <div>
               <div className="div-stat-label">Division Lead</div>
-              <div style={{fontFamily:'var(--display)',fontSize:16,fontWeight:600,marginTop:4}}>Aloysius Sandy H.O.</div>
+              <div style={{fontFamily:'var(--display)',fontSize:16,fontWeight:600,marginTop:4}}>{leadersOf('Metaverse').lead}</div>
             </div>
             <div>
               <div className="div-stat-label">Vice Lead</div>
-              <div style={{fontFamily:'var(--display)',fontSize:16,fontWeight:600,marginTop:4}}>Darrel Kurniawan</div>
+              <div style={{fontFamily:'var(--display)',fontSize:16,fontWeight:600,marginTop:4}}>{leadersOf('Metaverse').vice}</div>
             </div>
           </div>
         </div>
@@ -118,8 +121,8 @@ export default function Metaverse() {
                   <div className="project-card-div">Game Design & Web Design</div>
                   <div className="project-card-name">{p.name}</div>
                   <p className="project-card-desc">{p.desc}</p>
-                  <div className="project-card-tags">{p.tags.map(t=><span key={t} className="project-card-tag">{t}</span>)}</div>
-                  <div className="project-status" style={{color:STATUS_COLORS[p.status],background:STATUS_COLORS[p.status]+'18',border:`1px solid ${STATUS_COLORS[p.status]}33`}}>{p.status}</div>
+                  <div className="project-card-tags">{(p.tags||[]).map(t=><span key={t} className="project-card-tag">{t}</span>)}</div>
+                  <div className="project-status" style={statusStyle(p.status)}>{p.status}</div>
                 </div>
               ))}
             </div>

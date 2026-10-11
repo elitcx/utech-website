@@ -2,7 +2,9 @@ import { useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useReveal } from '../../hooks/useReveal';
 import { SIGNUP_CONFIG } from '../../config/signup';
-import { DIVISION_PROJECTS } from '../../data/projects';
+import { ALL_PROJECTS } from '../../data/projects';
+import { STATS, DIVISIONS } from '../../data/stats';
+import { ALL_EVENTS, isUpcoming } from '../../data/events';
 
 const BOOT_LINES = [
   { type:'dim', text:'U-TECH OS v2.6.1 · April 2026' },
@@ -36,39 +38,39 @@ const COMMANDS = {
     { type:'dim', text:'All divisions: OPEN TO JOIN' },
     { type:'spacer' },
   ],
-  events: () => [
-    { type:'blue', text:'Upcoming Events' },
-    { type:'spacer' },
-    { type:'green',  text:'  MAY 03   Spring Hackathon 2026          [Smart Classroom 2]' },
-    { type:'out',    text:'  MAY 17   AI & Machine Learning Workshop  [Smart Classroom 2]' },
-    { type:'amber',  text:'  JUN 06   Industry Night — Summer Edition [SMA Regina Pacis]' },
-    { type:'out',    text:'  JUN 21   End-of-Year Showcase & Social   [SMA Regina Pacis]' },
-    { type:'spacer' },
-  ],
+  events: () => {
+    const upcoming = ALL_EVENTS.filter(isUpcoming);
+    if (!upcoming.length) return [
+      { type:'out', text:'No upcoming events right now. Check back soon!' },
+      { type:'spacer' },
+    ];
+    return [
+      { type:'blue', text:'Upcoming Events' },
+      { type:'spacer' },
+      ...upcoming.slice(0, 5).map(e => ({
+        type: e.type === 'Networking' ? 'amber' : 'green',
+        text: `  ${e.month} ${e.day.padStart(2, '0')}   ${e.title.padEnd(34)} [${e.location}]`,
+      })),
+      { type:'spacer' },
+    ];
+  },
   members: () => [
     { type:'out', text:'Total members:' },
-    { type:'green', text:'  62 active  ·  Metaverse: 31  ·  Robotics: 24  ·  3D Printing: 22' },
+    { type:'green', text:`  ${STATS.members} active  ·  Metaverse: ${DIVISIONS.metaverse.members}  ·  Robotics: ${DIVISIONS.robotics.members}  ·  3D Printing: ${DIVISIONS.printing.members}` },
     { type:'spacer' },
   ],
   projects: () => {
-    const PREFIX = { metaverse:'MV', robotics:'RB', printing:'3D' };
-    const COLOR  = { metaverse:'blue', robotics:'green', printing:'amber' };
-    const lines = [
+    const PREFIX = { all:'ALL', metaverse:'MV', robotics:'RB', printing:'3D' };
+    const COLOR  = { all:'blue', metaverse:'blue', robotics:'green', printing:'amber' };
+    const ongoing = ALL_PROJECTS.filter(p => p.status !== 'Shipped');
+    return [
       { type:'blue', text:'Active Projects' },
       { type:'spacer' },
+      ...ongoing.map(p => ({ type: COLOR[p.division], text: `  [${PREFIX[p.division]}] ${p.name.padEnd(30)}— ${p.status.toLowerCase()}` })),
+      { type:'spacer' },
+      { type:'dim', text:`${ongoing.length} ongoing projects across 3 divisions` },
+      { type:'spacer' },
     ];
-    let count = 0;
-    for (const [div, projects] of Object.entries(DIVISION_PROJECTS)) {
-      for (const p of projects.filter(p => p.status === 'Active')) {
-        const tag = `[${PREFIX[div]}]`;
-        lines.push({ type: COLOR[div], text: `  ${tag} ${p.name.padEnd(26)}— active` });
-        count++;
-      }
-    }
-    lines.push({ type:'spacer' });
-    lines.push({ type:'dim', text:`${count} active projects across 3 divisions` });
-    lines.push({ type:'spacer' });
-    return lines;
   },
   whoami: () => [
     { type:'blue', text:'URSU Technology' },
@@ -120,6 +122,7 @@ export default function Terminal() {
   const [input, setInput] = useState('');
   const [history, setHistory] = useState([]);
   const [histIdx, setHistIdx] = useState(-1);
+  const [authMode, setAuthMode] = useState(false);
   const bodyRef = useRef(null);
   const inputRef = useRef(null);
   const ref = useReveal();
@@ -130,7 +133,25 @@ export default function Terminal() {
     if (bodyRef.current) bodyRef.current.scrollTop = bodyRef.current.scrollHeight;
   };
 
+  const submitPassword = async (raw) => {
+    const password = raw;
+    setInput('');
+    setAuthMode(false);
+    if (!password) { setLines(l => [...l, { type:'dim', text:'Cancelled.' }, { type:'spacer' }]); return; }
+    setLines(l => [...l, { type:'dim', text:'Verifying ........' }]);
+    const { login, setToken } = await import('../../admin/api');
+    try {
+      setToken(await login(password));
+      setLines(l => [...l, { type:'green', text:'Access granted. Opening dashboard ...' }, { type:'spacer' }]);
+      setTimeout(() => navigate('/admin'), 700);
+    } catch (e) {
+      setLines(l => [...l, { type:'err', text: e.status === 401 ? 'Access denied.' : e.message }, { type:'spacer' }]);
+    }
+    setTimeout(scrollBody, 0);
+  };
+
   const runCmd = (raw) => {
+    if (authMode) { submitPassword(raw); return; }
     const trimmed = raw.trim();
     if (!trimmed) return;
     const [cmd, ...args] = trimmed.toLowerCase().split(' ');
@@ -143,6 +164,14 @@ export default function Terminal() {
       setLines([{ type:'dim', text:'Terminal cleared.' }, { type:'spacer' }]);
       setHistory(h => [trimmed, ...h]);
       setHistIdx(-1);
+      setInput('');
+      setTimeout(scrollBody, 0);
+      return;
+    }
+
+    if (cmd === 'admin') {
+      setLines([...newLines, { type:'amber', text:'Manager access. Enter password (Enter to submit, empty to cancel):' }]);
+      setAuthMode(true);
       setInput('');
       setTimeout(scrollBody, 0);
       return;
@@ -237,17 +266,18 @@ export default function Terminal() {
           </div>
           <div className="t-input-row">
             <label htmlFor="terminal-cmd-input" className="sr-only">Terminal command input</label>
-            <span className="t-input-prompt">ursu@tech:~$</span>
+            <span className="t-input-prompt">{authMode ? 'password:' : 'ursu@tech:~$'}</span>
             <input
               id="terminal-cmd-input"
               ref={inputRef}
               className="t-input"
+              type={authMode ? 'password' : 'text'}
               value={input}
               onChange={e => setInput(e.target.value)}
               onKeyDown={onKeyDown}
-              placeholder="type a command..."
+              placeholder={authMode ? 'password...' : 'type a command...'}
               spellCheck={false}
-              autoComplete="off"
+              autoComplete={authMode ? 'new-password' : 'off'}
             />
           </div>
         </div>

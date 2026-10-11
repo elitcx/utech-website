@@ -5,6 +5,7 @@ import Nav from '../components/Nav';
 import Marquee from '../components/Marquee';
 import Footer from '../components/Footer';
 import { SIGNUP_CONFIG } from '../config/signup';
+import { STATS } from '../data/stats';
 import '../styles/join.css';
 
 const FAQS = [
@@ -20,7 +21,7 @@ const PERKS = [
 { icon: '🧰', title: 'Real Projects', desc: 'Work on live, shipped projects, not just toy examples.' },
 { icon: '🏆', title: 'Competitions', desc: 'Hackathons, CTFs, and design challenges with real prizes.' },
 { icon: '🤝', title: 'Industry Network', desc: 'Connect with professionals at our networking events.' },
-{ icon: '🎓', title: 'Workshops', desc: '13+ workshops per year on in-demand technical skills.' },
+{ icon: '🎓', title: 'Workshops', desc: STATS.eventsPerYear + ' workshops per year on in-demand technical skills.' },
 { icon: '🖨️', title: 'Print Lab Access', desc: 'Supervised access to the Bambu Lab X1 Carbon, a high-speed CoreXY with 16-colour AMS.' },
 { icon: '📸', title: 'Instagram Community', desc: 'Follow us @ursutech for updates, highlights, and announcements.' },
 { icon: '🚀', title: 'Mentorship', desc: 'Pair with experienced members on challenging projects.' },
@@ -87,8 +88,8 @@ export default function Join() {
   const r1 = useReveal(), r2 = useReveal(), r3 = useReveal(), r4 = useReveal();
 
   const heroSub = SIGNUP_CONFIG.isOpen
-    ? 'Free membership. No experience needed. Three technical divisions, 62 members, and 13+ events per year. Sign-ups are open now. Scroll down to apply.'
-    : 'Free membership. No experience needed. Three technical divisions, 62 members, and 13+ events per year. Sign-ups open periodically. Scroll down to stay in the loop.';
+    ? 'Free membership. No experience needed. Three technical divisions, ' + STATS.members + ' members, and ' + STATS.eventsPerYear + ' events per year. Sign-ups are open now. Scroll down to apply.'
+    : 'Free membership. No experience needed. Three technical divisions, ' + STATS.members + ' members, and ' + STATS.eventsPerYear + ' events per year. Sign-ups open periodically. Scroll down to stay in the loop.';
 
   return (
     <>
@@ -105,7 +106,7 @@ export default function Join() {
           </div>
           <div style={{ opacity: 0, animation: 'fadeUp 0.8s 0.4s ease forwards' }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-              {[['62', 'Active members across 3 divisions'], ['Free', 'Connections from industry experts'], ['13+', 'Events, workshops & hackathons per year'], ['3', 'Technical divisions to choose from']].map(([n, l]) =>
+              {[[STATS.members, 'Active members across 3 divisions'], ['Free', 'Connections from industry experts'], [STATS.eventsPerYear, 'Events, workshops & hackathons per year'], ['3', 'Technical divisions to choose from']].map(([n, l]) =>
                 <div key={l} style={{ display: 'flex', alignItems: 'center', gap: 16, padding: '14px 20px', background: 'var(--bg2)', border: '1px solid var(--border)', borderRadius: 6 }}>
                   <div style={{ fontFamily: 'var(--display)', fontSize: 22, fontWeight: 700, color: 'var(--blue)', letterSpacing: '-0.02em', width: 52, flexShrink: 0 }}>{n}</div>
                   <div style={{ fontSize: 14, color: 'var(--white-dim)' }}>{l}</div>

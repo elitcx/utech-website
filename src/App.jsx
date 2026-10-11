@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useEffect, lazy, Suspense } from 'react';
 import Home from './pages/Home';
 import About from './pages/About';
 import Events from './pages/Events';
@@ -7,6 +7,8 @@ import Join from './pages/Join';
 import Metaverse from './pages/divisions/Metaverse';
 import Robotics from './pages/divisions/Robotics';
 import Printing from './pages/divisions/Printing';
+
+const Admin = lazy(() => import('./admin/Admin'));
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -26,6 +28,7 @@ export default function App() {
         <Route path="/metaverse" element={<Metaverse />} />
         <Route path="/robotics" element={<Robotics />} />
         <Route path="/printing" element={<Printing />} />
+        <Route path="/admin" element={<Suspense fallback={null}><Admin /></Suspense>} />
       </Routes>
     </BrowserRouter>
   );

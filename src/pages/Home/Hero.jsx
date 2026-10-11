@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { DIVISION_PROJECTS } from '../../data/projects';
+import { divInfo } from '../../data/stats';
 
 /* ── MetaverseCanvas ── */
 function MetaverseCanvas({ active }) {
@@ -296,8 +296,8 @@ const DIV_DATA = [
     tint:'radial-gradient(ellipse 60% 60% at 50% 50%, rgba(85,112,241,0.07) 0%, transparent 70%)',
     title:'Metaverse', titleSub:'& Web Design',
     desc:'Building immersive spatial experiences at the intersection of virtual reality, augmented reality, and real-time 3D.',
-    tags:['Unity','Godot','React','HTML/CSS','Figma','JavaScript'],
-    btnClass:'', members:31, projects:DIVISION_PROJECTS.metaverse.length, path:'/metaverse',
+    tags:divInfo('metaverse').tags,
+    btnClass:'', members:divInfo('metaverse').members, projects:divInfo('metaverse').projects, path:'/metaverse',
   },
   {
     div:'robotics', num:'02',
@@ -306,8 +306,8 @@ const DIV_DATA = [
     tint:'radial-gradient(ellipse 60% 60% at 50% 50%, rgba(34,201,122,0.06) 0%, transparent 70%)',
     title:'Robotics', titleSub:'& Embedded Systems',
     desc:'Designing autonomous machines, from 3-DOF arms to computer vision pipelines, that interact with the physical world.',
-    tags:['ROS2','Arduino','OpenCV','Raspberry Pi','Kinematics','C++'],
-    btnClass:'green-btn', members:24, projects:DIVISION_PROJECTS.robotics.length, path:'/robotics',
+    tags:divInfo('robotics').tags,
+    btnClass:'green-btn', members:divInfo('robotics').members, projects:divInfo('robotics').projects, path:'/robotics',
   },
   {
     div:'printing', num:'03',
@@ -316,8 +316,8 @@ const DIV_DATA = [
     tint:'radial-gradient(ellipse 60% 60% at 50% 50%, rgba(245,162,50,0.06) 0%, transparent 70%)',
     title:'3D Printing', titleSub:'& Rapid Prototyping',
     desc:'Turning digital designs into physical objects: high-speed CoreXY FDM, multi-colour AMS, and iterative hardware prototyping.',
-    tags:['Fusion 360','CoreXY / AMS','OpenSCAD','Bambu Studio','PLA / PETG / CF','CAD'],
-    btnClass:'amber-btn', members:22, projects:DIVISION_PROJECTS.printing.length, path:'/printing',
+    tags:divInfo('printing').tags,
+    btnClass:'amber-btn', members:divInfo('printing').members, projects:divInfo('printing').projects, path:'/printing',
   },
 ];
 

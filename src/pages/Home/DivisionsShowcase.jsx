@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useReveal } from '../../hooks/useReveal';
 import { DIVISION_PROJECTS } from '../../data/projects';
+import { divInfo } from '../../data/stats';
+import { leadersOf } from '../../data/team';
 
 const DIVISIONS = [
   {
@@ -12,10 +14,10 @@ const DIVISIONS = [
     glowColor: 'rgba(85,112,241,0.12)',
     iconBg: 'rgba(85,112,241,0.1)',
     desc: 'Building immersive XR experiences: VR worlds, spatial UI, WebGL shaders, and game engines.',
-    tags: ['Unity', 'WebXR', 'Spatial UI', 'AR/VR', 'Shaders', 'Three.js'],
-    members: 31, projects: DIVISION_PROJECTS.metaverse.length,
-    projects_list: DIVISION_PROJECTS.metaverse.slice(0, 3),
-    leader: 'Aloysius Sandy H.O.', viceLead: 'Darrel Kurniawan',
+    tags: divInfo('metaverse').tags,
+    members: divInfo('metaverse').members, projects: divInfo('metaverse').projects,
+    projects_list: [...DIVISION_PROJECTS.metaverse].sort((a, b) => (a.status === 'Shipped') - (b.status === 'Shipped')).slice(0, 3),
+    leader: leadersOf('Metaverse').lead, viceLead: leadersOf('Metaverse').vice,
     icon: (color) => (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.5">
         <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/>
@@ -31,10 +33,10 @@ const DIVISIONS = [
     glowColor: 'rgba(34,201,122,0.1)',
     iconBg: 'rgba(34,201,122,0.08)',
     desc: 'Designing and programming autonomous machines: robotic arms, rovers, embedded systems, and computer vision.',
-    tags: ['ROS2', 'Arduino', 'OpenCV', 'Raspberry Pi', 'Kinematics', 'C++'],
-    members: 24, projects: DIVISION_PROJECTS.robotics.length,
-    projects_list: DIVISION_PROJECTS.robotics.slice(0, 3),
-    leader: 'Benediktus Hastu T.', viceLead: 'Kenneth Jehezkiel M.W.',
+    tags: divInfo('robotics').tags,
+    members: divInfo('robotics').members, projects: divInfo('robotics').projects,
+    projects_list: [...DIVISION_PROJECTS.robotics].sort((a, b) => (a.status === 'Shipped') - (b.status === 'Shipped')).slice(0, 3),
+    leader: leadersOf('Robotics').lead, viceLead: leadersOf('Robotics').vice,
     icon: (color) => (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.5">
         <rect x="3" y="11" width="4" height="8" rx="1"/>
@@ -52,10 +54,10 @@ const DIVISIONS = [
     glowColor: 'rgba(245,162,50,0.1)',
     iconBg: 'rgba(245,162,50,0.08)',
     desc: 'Rapid prototyping from CAD to physical object: high-speed CoreXY FDM, multi-colour AMS, parametric design, and hardware iteration.',
-    tags: ['Fusion 360', 'CoreXY/AMS', 'OpenSCAD', 'Bambu Studio', 'PLA/PETG/CF', 'CAD'],
-    members: 22, projects: DIVISION_PROJECTS.printing.length,
-    projects_list: DIVISION_PROJECTS.printing.slice(0, 3),
-    leader: 'Carlos Keiran I.', viceLead: 'Michael Satrio B.',
+    tags: divInfo('printing').tags,
+    members: divInfo('printing').members, projects: divInfo('printing').projects,
+    projects_list: [...DIVISION_PROJECTS.printing].sort((a, b) => (a.status === 'Shipped') - (b.status === 'Shipped')).slice(0, 3),
+    leader: leadersOf('3D Printing').lead, viceLead: leadersOf('3D Printing').vice,
     icon: (color) => (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.5">
         <polyline points="12 2 2 7 12 12 22 7 12 2"/>
