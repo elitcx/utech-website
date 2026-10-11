@@ -8,8 +8,8 @@ import { DIV_COLORS, teamOf } from '../data/team';
 import { ALL_PROJECTS, ACTIVE_PROJECTS, DIV_LABEL, DIV_ACCENT, statusStyle } from '../data/projects';
 import { STATS, fill } from '../data/stats';
 import site from '../data/site.json';
+import { TIMELINE } from '../data/timeline';
 
-const TIMELINE = site.timeline;
 const ACTIVE_COUNT = ACTIVE_PROJECTS.length;
 const COLOR_CYCLE = ['rgba(85,112,241,0.08)', 'rgba(34,201,122,0.06)', 'rgba(245,162,50,0.06)'];
 const PORTFOLIO = ALL_PROJECTS.filter(p => p.showcase).map((p, i) => ({

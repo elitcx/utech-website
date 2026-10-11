@@ -21,9 +21,12 @@ export const TYPE_TAG_STYLE = {
 //         location, time, desc, division ('All'|'Metaverse'|'Robotics'|'3D Printing')
 // Optional: featured (bool), capacity (string)
 // upcoming/past is determined automatically from the date — no manual flag needed
-export const ALL_EVENTS = site.events;
-
 const MONTH_INDEX = { JAN:0,FEB:1,MAR:2,APR:3,MAY:4,JUN:5,JUL:6,AUG:7,SEP:8,OCT:9,NOV:10,DEC:11 };
+
+export const eventTime = e => new Date(e.year, MONTH_INDEX[e.month], Number(e.day)).getTime();
+
+// Always chronological, whatever order they were typed in
+export const ALL_EVENTS = [...site.events].sort((a, b) => eventTime(a) - eventTime(b));
 
 export const isUpcoming = e =>
   new Date(e.year, MONTH_INDEX[e.month], Number(e.day)) >=
