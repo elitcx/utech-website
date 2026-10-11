@@ -127,6 +127,16 @@
       "status": "Shipped",
       "img": "/uploads/figma.webp",
       "showcase": true
+    },
+    {
+      "id": 8,
+      "division": "robotics",
+      "name": "Simple Robotic Car",
+      "desc": "",
+      "tags": [],
+      "status": "In Progress",
+      "img": null,
+      "showcase": false
     }
   ],
   "events": [
